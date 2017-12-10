@@ -117,6 +117,140 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20170523-Oracle 11g RAC Installation Guide"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/">RAC学习记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/" class="article-date">
+	  <time datetime="2017-05-23T07:00:00.000Z" itemprop="datePublished">五月 23, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            RAC理论基础在RAC术语中，主机通常叫做“节点”。每个主机的硬件配置应该一样：
+
+每个主机至少需要两块网卡，一个用于集群内部私有通信—Private NIC，另一个网卡用于对外提供服务，如提供用户数据查询—公共网卡（Public NIC）；
+每个主机还要有一个HBA卡，通过光纤连接到存储设备
+除公共和私有IP，每个节点还有VIP（Virtual IP），宕机时使用  共享存储
+多实例，单一数据 架构
+所有节点共享一个数据库
+数据文件、联机日志、参数文件、控制文件必须存放在共享存储上
+保证每个节点都能访问这个存储设备  
+
+
+安装步骤服务器准备
+操作系统及补丁包要求：OEL 使用 ASMlib、其他Linux使用udev内存：2G以上、SWAP 4G 、硬盘 30G以上
+
+创建所需组、...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAC/">RAC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cluster/">cluster</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-20170510-OpenHab安装配置"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/10/20170510-OpenHab安装配置/">OpenHab安装配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/10/20170510-OpenHab安装配置/" class="article-date">
+	  <time datetime="2017-05-10T08:10:32.000Z" itemprop="datePublished">五月 10, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            前言
+OpenHab简介开源物联网平台，吸引我的是它可实现一次部署，即可同时支持Web、安卓、苹果等控制管理，且界面美观、可定制性强。较国内如yeelink。
+OpenHab原理安装前首先要懂原理，不然后面出现啥问题会一脸懵逼。
+OpenHab安装参考官方教程
+OpenHab配置
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/10/20170510-OpenHab安装配置/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/物联网/">物联网</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenHab/">OpenHab</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20170509-OpenStack初步"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -664,172 +798,11 @@ Linux内核层为各种硬件提供底层驱动，如显示驱动、音频驱动
 <!-- Table of Contents -->
 
   
-    <article id="post-20170322-云计算技术初步"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/22/20170322-云计算技术初步/">云计算技术初步</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/22/20170322-云计算技术初步/" class="article-date">
-	  <time datetime="2017-03-22T03:17:23.000Z" itemprop="datePublished">三月 22, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言云计算说白了就是将硬件资源整合再在软件层面重新进行分配，一般是三大资源—计算资源、网络资源、存储资源。
-三种角色
-资源整合运营者
-资源使用者
-终端客户特点
-资源池弹性可扩张
-按需提供资源服务
-虚拟化
-网络化资源接入
-高可靠和安全性分类按资源封装层次分
-基础设施即服务（Infrastructure as a Service，IaaS） 如：Amazon EC2、IBM Blue Cloud、Sun Grid主要是虚拟化技术
-平台即服务（Platform as a Service，PaaS） 如：IBM IT Factory、Google APPEngine、Force.com    
-软件即服务（Software as a Service，SaaS） 如：Google APPS、So...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/22/20170322-云计算技术初步/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ITIL/">ITIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/云计算/">云计算</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-20170313-Android入门开发(三)-Java常用工具类"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/20170313-Android入门开发(三)-Java常用工具类/">Android入门开发(三)---Java常用工具类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/20170313-Android入门开发(三)-Java常用工具类/" class="article-date">
-	  <time datetime="2017-03-13T05:16:45.000Z" itemprop="datePublished">三月 13, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言本文主要讨论Java常用工具类。
-
-包与权限问题
-软件包概念—把类放在不同文件夹中，即为Java类提供了命名空间1package 包名;
-
-
-注：
-
-编译方法：javac -d . xxx.java-d参数是根据包名生成文件夹 . 表当前目录
-一个类的全名应该是“包名” + “.” + “类名”执行方法：java 包名.类名
-包名的命名规范（习惯）：
-
-要求所有字母小写
-包名一般是域名反写
-
-
-访问权限
-
-public：公共权限
-声明为public权限后，类名必须和文件名相同
-
-不同包中一个类要访问另外一个类时，该类及该类成员变量或成员函数必须为public权限
-
-
-private：私有权限
-
-只能修饰变量和函数、内部类
-
-只能在当前类使用
-
-
-default：包级别访问权限
-
-默...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/20170313-Android入门开发(三)-Java常用工具类/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
 
 </section>
@@ -933,6 +906,30 @@ default：包级别访问权限
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/12/08/20171208-NBU catalog报错处理办法/">NBU catalog报错处理办法</a></h6>
+              <span>十二月 8, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/05/20171205-Oracle参数文件/">Oracle参数文件</a></h6>
+              <span>十二月 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/10/12/20171012-iptables/">iptables</a></h6>
               <span>十月 12, 2017</span>
             </div>
@@ -975,30 +972,6 @@ default：包级别访问权限
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/29/20170729-VSAN/">说说vSAN</a></h6>
-              <span>七月 29, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/06/10/20170610-RaspberryPi+OpenHab打造智能安防监控报警系统/">Raspberry Pi + OpenHab 打造智能安防监控报警系统</a></h6>
-              <span>六月 10, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1008,7 +981,7 @@ default：包级别访问权限
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1018,7 +991,7 @@ default：包级别访问权限
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
     </div>
   </div>
 
@@ -1028,7 +1001,7 @@ default：包级别访问权限
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 

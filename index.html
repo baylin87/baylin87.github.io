@@ -117,6 +117,142 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20171208-NBU catalog报错处理办法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/08/20171208-NBU catalog报错处理办法/">NBU catalog报错处理办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/08/20171208-NBU catalog报错处理办法/" class="article-date">
+	  <time datetime="2017-12-08T04:19:12.000Z" itemprop="datePublished">十二月 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            现象描述
+环境说明：
+
+NBU 7.7.3 Master Server
+Windows Server 2008R2 x64操作系统
+
+
+NBU Master Server备份catalog一直报错，错误代码2
+
+status详细信息如下：
+123456789102017-12-8 8:40:23 - Info bpdbm (pid=12608) staging relational database files for catalog backup2017-12-8 8:40:23 - Info bpdbm (pid=12608) staging NBAZDB backup to C:\Program Files\Veritas\NetBackupDB\staging2017-12-8...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/08/20171208-NBU catalog报错处理办法/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netbackup/">Netbackup</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-20171205-Oracle参数文件"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/05/20171205-Oracle参数文件/">Oracle参数文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/05/20171205-Oracle参数文件/" class="article-date">
+	  <time datetime="2017-12-05T14:20:00.000Z" itemprop="datePublished">十二月 5, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            背景因为平时做数据库恢复需检查pfile文件，对这方面空白较多，查了点资料，详细了解一下。
+
+参数文件类型pfile –parameter file 文本文件
+spfile –server parameter file  二进制文件
+9i后才有，通过alter system 修改到spfile 下次启动生效
+pfile作用：文件记录数据库配置与功能开启或关闭
+数据库启动时需读取参数文件内容，实例启动后就一直在内存中。
+文件位置：通过dbca图形工具建立数据库，有一个模板参数文件pfile
+$ORACLE_BASE/admin/&lt;db_unique_name&gt;/pfile/init.ora.&lt;n+&gt;
+修改到参数文件达到时候需要关闭数据库然后才有效
+10g后只有sp...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/05/20171205-Oracle参数文件/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pfile/">pfile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spfile/">spfile</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20171012-iptables"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -682,141 +818,7 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-20170523-Oracle 11g RAC Installation Guide"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/">RAC学习记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/" class="article-date">
-	  <time datetime="2017-05-23T07:00:00.000Z" itemprop="datePublished">五月 23, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            RAC理论基础在RAC术语中，主机通常叫做“节点”。每个主机的硬件配置应该一样：
-
-每个主机至少需要两块网卡，一个用于集群内部私有通信—Private NIC，另一个网卡用于对外提供服务，如提供用户数据查询—公共网卡（Public NIC）；
-每个主机还要有一个HBA卡，通过光纤连接到存储设备
-除公共和私有IP，每个节点还有VIP（Virtual IP），宕机时使用  共享存储
-多实例，单一数据 架构
-所有节点共享一个数据库
-数据文件、联机日志、参数文件、控制文件必须存放在共享存储上
-保证每个节点都能访问这个存储设备  
-
-
-安装步骤服务器准备
-操作系统及补丁包要求：OEL 使用 ASMlib、其他Linux使用udev内存：2G以上、SWAP 4G 、硬盘 30G以上
-
-创建所需组、...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAC/">RAC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cluster/">cluster</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-20170510-OpenHab安装配置"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/10/20170510-OpenHab安装配置/">OpenHab安装配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/10/20170510-OpenHab安装配置/" class="article-date">
-	  <time datetime="2017-05-10T08:10:32.000Z" itemprop="datePublished">五月 10, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言
-OpenHab简介开源物联网平台，吸引我的是它可实现一次部署，即可同时支持Web、安卓、苹果等控制管理，且界面美观、可定制性强。较国内如yeelink。
-OpenHab原理安装前首先要懂原理，不然后面出现啥问题会一脸懵逼。
-OpenHab安装参考官方教程
-OpenHab配置
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/10/20170510-OpenHab安装配置/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/物联网/">物联网</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenHab/">OpenHab</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RMAN/">RMAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
 
       
             
@@ -833,7 +835,7 @@ OpenHab配置
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 </section>
@@ -937,6 +939,30 @@ OpenHab配置
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/12/08/20171208-NBU catalog报错处理办法/">NBU catalog报错处理办法</a></h6>
+              <span>十二月 8, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/12/05/20171205-Oracle参数文件/">Oracle参数文件</a></h6>
+              <span>十二月 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/10/12/20171012-iptables/">iptables</a></h6>
               <span>十月 12, 2017</span>
             </div>
@@ -979,30 +1005,6 @@ OpenHab配置
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/29/20170729-VSAN/">说说vSAN</a></h6>
-              <span>七月 29, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/06/10/20170610-RaspberryPi+OpenHab打造智能安防监控报警系统/">Raspberry Pi + OpenHab 打造智能安防监控报警系统</a></h6>
-              <span>六月 10, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1012,7 +1014,7 @@ OpenHab配置
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1022,7 +1024,7 @@ OpenHab配置
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 12.5px;">oracle</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
     </div>
   </div>
 
@@ -1032,7 +1034,7 @@ OpenHab配置
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
