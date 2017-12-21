@@ -117,6 +117,89 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20171220-RHEL7.0日志分析记录"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/12/20/20171220-RHEL7.0日志分析记录/">RHEL7.0日志分析记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/20/20171220-RHEL7.0日志分析记录/" class="article-date">
+	  <time datetime="2017-12-20T00:20:00.000Z" itemprop="datePublished">十二月 20, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            背景最近一个客户服务老挂，检查服务器，无法ping通且登录界面黑屏，只能强行重启，尝试检查日志发现默认日志为重启删除，坑。
+
+服务器信息
+
+Red Hat Enterprise Linux Server release 7.0 (Maipo)
+
+日志相关回顾一般位置：/var/log
+常见日志：
+/var/log/boot.log
+顾名思义，系统启动日志，仅保留本次开机
+
+/var/log/cron
+所有crontab计划任务日志
+
+/var/log/lastlog
+记录系统所有账号最后登录信息
+
+
+
+/var/log/maillog &amp;  /var/log/mail/*
+往来邮件日志记录
+
+/var/log/messages
+系统重要信息基本都在这，为必看日志
+
+/var/l...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/12/20/20171220-RHEL7.0日志分析记录/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20171208-NBU catalog报错处理办法"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -751,86 +834,6 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
 <!-- Table of Contents -->
 
   
-    <article id="post-20170530-Oracle备份恢复(一)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/30/20170530-Oracle备份恢复(一)/">Oracle备份恢复</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/30/20170530-Oracle备份恢复(一)/" class="article-date">
-	  <time datetime="2017-05-30T04:50:00.000Z" itemprop="datePublished">五月 30, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言
-细谈Oracle备份方法Oracle备份恢复概念
-
-基本概念运行方式 Oracle数据库有两种运行方式：一是归档方式（ArchiveLog），二是不归档方式（NoArchiveLog）。
-
-归档方式  当数据库发生故障时最大限度恢复数据库，可以保证不丢失任何已提交的数据，即恢复到最后一次commit；
-  可实现冷备和热备；
-  支持完全备份和非完全备份以及完全恢复与非完全恢复；
-  但消耗系统10%性能，同时需要消耗更多存储空间；
-
-非归档方式  只能恢复数据库到最近的回收点，即最后一次全备；
-  只支持冷备份（又称为一致性备份）；
-  只能完全备份与完全恢复；
-
-
-
-备份分类
-物理备份
-冷备份脱机备份—备份前数据库必须彻底关闭。
-热备份联机备份—只适用于归档方式
-
-
-逻辑备份...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/30/20170530-Oracle备份恢复(一)/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RMAN/">RMAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -939,6 +942,18 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/12/20/20171220-RHEL7.0日志分析记录/">RHEL7.0日志分析记录</a></h6>
+              <span>十二月 20, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/12/08/20171208-NBU catalog报错处理办法/">NBU catalog报错处理办法</a></h6>
               <span>十二月 8, 2017</span>
             </div>
@@ -993,18 +1008,6 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/05/20170805-docker网络管理/">docker单主机网络管理实践</a></h6>
-              <span>八月 5, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1014,7 +1017,7 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1024,7 +1027,7 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
     </div>
   </div>
 
@@ -1034,7 +1037,7 @@ VMware vSAN (formerly Virtual SAN), is the industry-leading software powering Hy
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
