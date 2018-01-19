@@ -117,6 +117,71 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20150904-git本地服务器搭建"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2015/09/04/20150904-git本地服务器搭建/">git本地服务器搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2015/09/04/20150904-git本地服务器搭建/" class="article-date">
+	  <time datetime="2015-09-04T05:33:33.000Z" itemprop="datePublished">九月 4, 2015</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            最近在参加RoboCup，因为考虑到团队代码不能公开，为了方便管理，今天特地学了下git的本地服务器搭建和使用，这个林纳斯开发的用着还是非常好，记录一下。
+
+运行环境我的客户端和服务器端都是Ubuntu14.04 LTS
+需要工具
+git
+ssh
+
+这里说明一下，git一般是要自己安装的，Ubuntu使用sudo apt-get install git即可。而ssh一般自带，通过ssh -V(v大写)可以查看，服务器端需安装Server端，sudo apt-get install openssh-server 。检查是否开启ssh：ps -e|grep ssh，如显示sshd则表示服务器开启，修改配置在/etc/ssh/sshd_config中。修改后需重启服务 sudo servic...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2015/09/04/20150904-git本地服务器搭建/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20150626-关于Excel的几点运用"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -371,6 +436,18 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2018/01/18/20180118-JS面试基础知识点/">JS笔试基础知识点</a></h6>
+              <span>一月 18, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/12/20/20171220-RHEL7.0日志分析记录/">RHEL7.0日志分析记录</a></h6>
               <span>十二月 20, 2017</span>
             </div>
@@ -425,18 +502,6 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/14/20170814-docker-machine/">docker machine</a></h6>
-              <span>八月 14, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -446,7 +511,7 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -456,7 +521,7 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 10px;">面筋</a>
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12.5px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/OpenHab/" style="font-size: 15px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 17.5px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 12.5px;">面筋</a>
     </div>
   </div>
 
@@ -466,7 +531,7 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -480,7 +545,7 @@ max.o不可执行，只有是有main()函数入口的才可执行，而...
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2017 lvbin&#39;s Blog All Rights Reserved.
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
           
       </div>
       <div class="site-credit">
