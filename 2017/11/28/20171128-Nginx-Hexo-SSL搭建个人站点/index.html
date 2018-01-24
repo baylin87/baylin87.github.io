@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nginx+hexo+ssl搭建个人站点 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="给闲置VPS增加点用处系列">
+<meta name="keywords" content="Linux,Nginx,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx+Hexo+SSL搭建个人站点">
+<meta property="og:url" content="http://binlv.top/2017/11/28/20171128-Nginx-Hexo-SSL搭建个人站点/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="给闲置VPS增加点用处系列">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-24T06:37:19.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx+Hexo+SSL搭建个人站点">
+<meta name="twitter:description" content="给闲置VPS增加点用处系列">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20171128-Nginx-Hexo-SSL搭建个人站点" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Nginx+Hexo+SSL搭建个人站点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/11/28/20171128-Nginx-Hexo-SSL搭建个人站点/" class="article-date">
+	  <time datetime="2017-11-28T06:09:02.000Z" itemprop="datePublished">十一月 28, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给闲置VPS增加点用处系列</p>
+<a id="more"></a>
+<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>Nginx相关安装配置参照我的<a href="https://binlv.top/2017/11/27/20171127-部署Nginx服务与基本配置/">上一篇关于Nginx配置的文章</a></p>
+<h1 id="Hexo-部署至Nginx"><a href="#Hexo-部署至Nginx" class="headerlink" title="Hexo 部署至Nginx"></a>Hexo 部署至Nginx</h1><p>一般有三种方法</p>
+<ul>
+<li>git设置git hook方式</li>
+<li>rsync同步本地Hexo至VPS</li>
+<li>VPS上部署Hexo，并执行<code>hexo server</code> ，再配置Nginx反向代理，让域名指向 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></li>
+</ul>
+<h2 id="git-hook方式"><a href="#git-hook方式" class="headerlink" title="git hook方式"></a>git hook方式</h2><p>1.配置服务器环境</p>
+<p>安装git并创建仓库，设置git hook</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">apt-get install git -y</div><div class="line">mkdir &lt;git工作目录&gt; &amp;&amp; <span class="built_in">cd</span> &lt;git工作目录&gt;</div><div class="line">git init --bare</div><div class="line">nano &lt;git工作目录&gt;/hook/post-reveive</div></pre></td></tr></table></figure>
+<p>将以下内容修改好放入<code>post-reveive</code>中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">GIT_REPO=/var/www/blog.git  <span class="comment">#git仓库</span></div><div class="line">TMP_GIT_CLONE=/tmp/blog</div><div class="line">PUBLIC_WWW=/var/www/blog <span class="comment">#网站目录</span></div><div class="line">rm -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></div><div class="line">git <span class="built_in">clone</span> <span class="variable">$GIT_REPO</span> <span class="variable">$TMP_GIT_CLONE</span></div><div class="line">rm -rf <span class="variable">$&#123;PUBLIC_WWW&#125;</span>/*</div><div class="line">cp -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="variable">$&#123;PUBLIC_WWW&#125;</span></div></pre></td></tr></table></figure>
+<p>赋予执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x post-receive</div></pre></td></tr></table></figure>
+<p>在本机配置</p>
+<p>在博客目录下运行下面命令，安装 git 部署工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>修改博客的配置文件 _config.yml，修改deploy选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy: </div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: 用户名@服务器地址:/var/www/blog.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<h1 id="开启站点HTTPS"><a href="#开启站点HTTPS" class="headerlink" title="开启站点HTTPS"></a>开启站点HTTPS</h1><p>https需要授权证书，这里使用的是<a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s Encrypt</a>家的免费证书。</p>
+<p>对了，要开启HTTPS首先你得有个人域名，因为证书是给域名授权的。至于域名申请，万网之类的都行，然后解析指向你的服务器。</p>
+<h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install letsencrypt</div></pre></td></tr></table></figure>
+<p>获取证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">letsencrypt certonly</div></pre></td></tr></table></figure>
+<p>根据提示完成获取，中间需要输入你的域名，最后出现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- Congratulations! Your certificate and chain have been saved at</div><div class="line">  /etc/letsencrypt/live/&lt;你的域名&gt;/fullchain.pem. Your cert will</div><div class="line">  expire on 2017-09-17. To obtain a new or tweaked version of this</div><div class="line">  certificate <span class="keyword">in</span> the future, simply run certbot-auto again. To</div><div class="line">  non-interactively renew *all* of your certificates, run</div><div class="line">  <span class="string">"certbot-auto renew"</span></div><div class="line">- If you like Certbot, please consider supporting our work by:</div><div class="line"></div><div class="line">  Donating to ISRG / Let<span class="string">'s Encrypt:   https://letsencrypt.org/donate</span></div><div class="line"><span class="string">  Donating to EFF:                    https://eff.org/donate-le</span></div></pre></td></tr></table></figure>
+<p>  就成功了，看提示，所有的证书文件在 <code>/etc/letsencrypt/live/你的域名</code>下，里面有下面几个文件证书文件，引用别人的解释下：</p>
+<blockquote>
+<ul>
+<li><code>privkey.pem</code></li>
+</ul>
+<p>这是私匙，对应 Nginx 的 ssl_certificate_key 选项，或者 Apache2 的 SSLCertificateKeyFile 选项。</p>
+<ul>
+<li><code>cert.pem</code> </li>
+</ul>
+<p>服务器证书，这个只有 Apache2 低于 2.4.8 版本需要，对应 SSLCertificateFile 选项。</p>
+<ul>
+<li><code>chain.pem</code></li>
+</ul>
+<p>除服务器证书之外的所有证书，对于 1.3.7 版以上的 Nginx 对应 ssl_trusted_certificate 选项，对于低于2.4.8 的 Apache2 对应 SSLCertificateChainFile 选项。</p>
+<ul>
+<li><code>fullchain.pem</code></li>
+</ul>
+<p>包括上面的服务器证书和其他证书, Nginx 对应 ssl_certificate 选项，2.4.8 版以上的 Apache2 对应 SSLCertificateFile 选项。</p>
+<p>如果是 Nginx，需要上面的 privkey.pem（对应 ssl_certificate_key 选项）和 fullchain.pem （对应 ssl_certificate 选项），还需要一个 dhparam.pem（对应 ssl_dhparam 选项） 需自己生成：</p>
+<p>openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048</p>
+<p>这个文件创建稍微需要一点时间，注意看我的路径，我的是在 /etc/nginx/ssl/ 下，如果没有ssl这个目录就自己建一个，当然你换其他地方也行。</p>
+</blockquote>
+<p>有了这三个文件: <code>privkey.pem</code>、<code>fullchain.pem</code> 、<code>dhparam.pem</code> 就可以配置 Nginx 了。</p>
+<h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><p>编辑 <code>/etc/nginx/conf.d/xx.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 80;</div><div class="line">        server_name binlv.top;</div><div class="line">    <span class="comment">#实现访问http的时候自动跳转到https</span></div><div class="line">        <span class="built_in">return</span> 301 https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen 443 ssl http2;</div><div class="line">    listen [::]:443 ssl http2;</div><div class="line">    server_name binlv.top;</div><div class="line">    </div><div class="line">    <span class="comment">#不输出 Nginx 版本号及其他错误信息</span></div><div class="line">    server_tokens off;</div><div class="line">    </div><div class="line">    <span class="comment"># 开启 HSTS,这么写是为了提交到 https://hstspreload.org/</span></div><div class="line">        add_header Strict-Transport-Security <span class="string">"max-age=31536000; includeSubDomains"</span> always;</div><div class="line">        <span class="comment"># 启用 XSS 保护，检查到 XSS 攻击时，停止渲染页面。</span></div><div class="line">    add_header X-XSS-Protection <span class="string">"1; mode=block"</span>;</div><div class="line">    </div><div class="line">        ssl_certificate /etc/letsencrypt/live/binlv.top/fullchain.pem;</div><div class="line">        ssl_certificate_key /etc/letsencrypt/live/binlv.top/privkey.pem;</div><div class="line">        ssl_dhparam /etc/nginx/ssl/dhparam.pem;</div><div class="line">        ssl_session_cache shared:SSL:50m;</div><div class="line">        ssl_session_timeout 1d;</div><div class="line">        ssl_session_tickets off;</div><div class="line">        ssl_protocols    TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">        ssl_ciphers <span class="string">'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA'</span>;</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        ssl_stapling on;</div><div class="line">        ssl_stapling_verify on;</div><div class="line">    </div><div class="line">    <span class="comment">#设置根目录，必须为已存在目录	</span></div><div class="line">    location / &#123;</div><div class="line">        root /var/www/blog;</div><div class="line">        index index.php index.htm index.html;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更新配置后要重启一下Nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart nginx</div></pre></td></tr></table></figure></p>
+<h2 id="设置证书自动更新"><a href="#设置证书自动更新" class="headerlink" title="设置证书自动更新"></a>设置证书自动更新</h2><p>Let’s Encrypt SSL 免费证书为短期证书，只有 90 天期限，提示到期前可以运行命令 <code>letsencrypt renew</code> 续期</p>
+<p>实现定时更新证书，我们可以用linux自带的定时器crontab<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ crontab -e</div></pre></td></tr></table></figure></p>
+<p>输入：　<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">　　30 2 1 * * /usr/bin/letsencrypt renew &gt;&gt; /var/<span class="built_in">log</span>/letsencrypt/le-renew.log</div><div class="line">　　35 2 1 * * /usr/bin/systemctl reload nginx</div></pre></td></tr></table></figure></p>
+<h2 id="取消授权"><a href="#取消授权" class="headerlink" title="取消授权"></a>取消授权</h2><p>如果想把授权的域名取消该怎么办呢？因为免费证书如果不定期更新的话几个月就会自动过期，所以删掉本地部署时对应创建的几个文件就行啦。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rm -rf /etc/letsencrypt/live/www.example.com/</div><div class="line">rm -rf /etc/letsencrypt/archive/www.example.com/</div><div class="line">rm /etc/letsencrypt/renewal/www.example.com.conf</div></pre></td></tr></table></figure>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>很多。。。</p>
+<p>本文完。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/杂七杂八/">杂七杂八</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/05/20171205-Oracle参数文件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Oracle参数文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/27/20171127-部署Nginx服务与基本配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">部署Nginx服务与基本配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx"><span class="nav-number">1.</span> <span class="nav-text">Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-部署至Nginx"><span class="nav-number">2.</span> <span class="nav-text">Hexo 部署至Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-hook方式"><span class="nav-number">2.1.</span> <span class="nav-text">git hook方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开启站点HTTPS"><span class="nav-number">3.</span> <span class="nav-text">开启站点HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置过程"><span class="nav-number">3.1.</span> <span class="nav-text">配置过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Nginx"><span class="nav-number">3.2.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置证书自动更新"><span class="nav-number">3.3.</span> <span class="nav-text">设置证书自动更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消授权"><span class="nav-number">3.4.</span> <span class="nav-text">取消授权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文档"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
