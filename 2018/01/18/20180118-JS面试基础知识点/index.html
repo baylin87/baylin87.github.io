@@ -13,18 +13,18 @@
     <meta name="baidu-site-verification" content="JTkcwS5G1R" />
   
   
-  <meta name="description" content="前言公开课讲得一些JS笔试中容易出现的知识点。 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+  <meta name="description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
 <meta name="keywords" content="面筋,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS笔试基础知识点">
 <meta property="og:url" content="http://binlv.top/2018/01/18/20180118-JS面试基础知识点/index.html">
 <meta property="og:site_name" content="lvbin&#39;s Blog">
-<meta property="og:description" content="前言公开课讲得一些JS笔试中容易出现的知识点。 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta property="og:description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-19T03:05:05.439Z">
+<meta property="og:updated_time" content="2018-01-24T02:29:10.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS笔试基础知识点">
-<meta name="twitter:description" content="前言公开课讲得一些JS笔试中容易出现的知识点。 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta name="twitter:description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
   
     <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
   
@@ -141,7 +141,9 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>公开课讲得一些JS笔试中容易出现的知识点。</p>
+        <p>公开课讲得一些JS笔试中容易出现的知识点。</p>
+<p>听公开课讲得一些JS笔试中容易出现的知识点。</p>
+<p>与其说是知识点，不如说是—“那些年走过的JS大坑”</p>
 <p>一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）</p>
 <a id="more"></a>
 <h1 id="字面量相关"><a href="#字面量相关" class="headerlink" title="字面量相关"></a>字面量相关</h1><p>定义：计算机能识别类型的数据。</p>
@@ -174,6 +176,23 @@ var themeMenus = {};
 <li>逻辑或||：a||b，如果a为true，结果就是true；如果a为false，则结果为b</li>
 <li>逻辑非：</li>
 </ul>
+<h2 id="Truthy-amp-Falsy"><a href="#Truthy-amp-Falsy" class="headerlink" title="Truthy &amp; Falsy"></a>Truthy &amp; Falsy</h2><p>总结一下一些奇葩的<code>boolean</code>类型，一般性的布尔值没什么好说的。特别提下一些会被判断为truthy和falsy。</p>
+<p>一些特别的”falsy”如下：</p>
+<ul>
+<li><code>&quot;&quot;</code> (empty string)</li>
+<li><code>0</code>，<code>-0</code>，<code>NaN</code> (invalid number)</li>
+<li><code>null</code>,<code>undefined</code></li>
+<li><code>false</code></li>
+</ul>
+<p>一些特别的“truthy”如下:</p>
+<ul>
+<li><code>&quot;hello&quot;</code></li>
+<li><code>42</code></li>
+<li><code>true</code></li>
+<li><code>[ ]</code>, <code>[ 1, &quot;2&quot;, 3 ]</code> (arrays)</li>
+<li><code>{ }</code>, <code>{ a: 42 }</code> (objects)</li>
+<li><code>function foo() { .. }</code> (functions)</li>
+</ul>
 <h2 id="三元运算符—"><a href="#三元运算符—" class="headerlink" title="三元运算符— ? :"></a>三元运算符— ? :</h2><p>或作为条件分支语句</p>
 <p>​         Boolean_expression? true_value : false_value;</p>
 <h1 id="变量、作用域"><a href="#变量、作用域" class="headerlink" title="变量、作用域"></a>变量、作用域</h1><ul>
@@ -202,7 +221,10 @@ var themeMenus = {};
 </ul>
 <p>结果：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">5.6</span>,<span class="number">7</span>,<span class="number">8</span>]	<span class="comment">//arr2[0]=8;    #[8,5,6,7]</span></div><div class="line">[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]	<span class="comment">//arr1.push(arr1.shift());	#[5,6,7,8]</span></div></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md" target="_blank" rel="external">You-Dont-Know-JS:: Up &amp; Going</a></li>
+</ul>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -264,7 +286,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量相关"><span class="nav-number">2.</span> <span class="nav-text">字面量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字面量"><span class="nav-number">2.1.</span> <span class="nav-text">特殊字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见考察点"><span class="nav-number">2.2.</span> <span class="nav-text">常见考察点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种运算符"><span class="nav-number">3.</span> <span class="nav-text">各种运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符（关系运算符）"><span class="nav-number">3.1.</span> <span class="nav-text">比较运算符（关系运算符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">3.2.</span> <span class="nav-text">赋值运算符 +=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符-amp-amp-、-、"><span class="nav-number">3.3.</span> <span class="nav-text">逻辑运算符 && 、||、!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符—"><span class="nav-number">3.4.</span> <span class="nav-text">三元运算符— ? :</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量、作用域"><span class="nav-number">4.</span> <span class="nav-text">变量、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">5.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">5.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">5.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量相关"><span class="nav-number">1.</span> <span class="nav-text">字面量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字面量"><span class="nav-number">1.1.</span> <span class="nav-text">特殊字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见考察点"><span class="nav-number">1.2.</span> <span class="nav-text">常见考察点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种运算符"><span class="nav-number">2.</span> <span class="nav-text">各种运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符（关系运算符）"><span class="nav-number">2.1.</span> <span class="nav-text">比较运算符（关系运算符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.2.</span> <span class="nav-text">赋值运算符 +=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符-amp-amp-、-、"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑运算符 && 、||、!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truthy-amp-Falsy"><span class="nav-number">2.4.</span> <span class="nav-text">Truthy & Falsy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符—"><span class="nav-number">2.5.</span> <span class="nav-text">三元运算符— ? :</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量、作用域"><span class="nav-number">3.</span> <span class="nav-text">变量、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol>
     
     </div>
   </aside>
