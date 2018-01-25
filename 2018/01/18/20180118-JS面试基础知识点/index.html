@@ -13,18 +13,18 @@
     <meta name="baidu-site-verification" content="JTkcwS5G1R" />
   
   
-  <meta name="description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+  <meta name="description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
 <meta name="keywords" content="面筋,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS笔试基础知识点">
 <meta property="og:url" content="http://binlv.top/2018/01/18/20180118-JS面试基础知识点/index.html">
 <meta property="og:site_name" content="lvbin&#39;s Blog">
-<meta property="og:description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta property="og:description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-24T02:29:10.965Z">
+<meta property="og:updated_time" content="2018-01-25T03:07:45.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS笔试基础知识点">
-<meta name="twitter:description" content="公开课讲得一些JS笔试中容易出现的知识点。 听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta name="twitter:description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
   
     <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
   
@@ -141,8 +141,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>公开课讲得一些JS笔试中容易出现的知识点。</p>
-<p>听公开课讲得一些JS笔试中容易出现的知识点。</p>
+        <p>听公开课讲得一些JS笔试中容易出现的知识点。</p>
 <p>与其说是知识点，不如说是—“那些年走过的JS大坑”</p>
 <p>一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）</p>
 <a id="more"></a>
@@ -160,12 +159,37 @@ var themeMenus = {};
 </li>
 </ul>
 <h1 id="各种运算符"><a href="#各种运算符" class="headerlink" title="各种运算符"></a>各种运算符</h1><h2 id="比较运算符（关系运算符）"><a href="#比较运算符（关系运算符）" class="headerlink" title="比较运算符（关系运算符）"></a>比较运算符（关系运算符）</h2><ul>
-<li>== 相等  ===全等于，即除判断值是否相等，还要判断数据类型，如1和true。!= 不相等（与==相反）</li>
-<li>比较运算的结果就是布尔值，true/false</li>
+<li><code>==</code> 相等  <code>===</code>全等于，即除判断值是否相等，还要判断数据类型，如<code>1</code>和<code>true</code>。<code>!=</code> 不相等（与<code>==</code>相反）</li>
+<li>比较运算的结果就是布尔值，<code>true</code>/<code>false</code></li>
 <li>其他数据参与比较运算时，也会隐式转换为数字参与运算</li>
-<li>NaN参与的话，无论与谁都是不等于false</li>
-<li>IsNaN()方法，判断一个数是否能转为NaN，能true，否false，能转的有：非数字字符串、undefined</li>
+<li><code>NaN</code>参与的话，无论与谁都是不等于<code>false</code></li>
+<li><code>IsNaN()</code>方法，判断一个数是否能转为<code>NaN</code>，能<code>true</code>，否<code>false</code>，能转的有：非数字字符串、<code>undefined</code></li>
 </ul>
+<h2 id="等式"><a href="#等式" class="headerlink" title="等式"></a>等式</h2><p>上面说到了比较运算符 <code>==</code> 和<code>===</code>，下面总结一下与等式(包括<code>==</code>, <code>===</code>, <code>!=</code>, 和 <code>!==</code>)相关的东西。</p>
+<p>首先说下<code>==</code>和<code>===</code>的区别，<code>==</code>只检查<strong>值(value)</strong>是否相同，而<code>===</code>不仅比较<strong>值(value)</strong>还要检查<strong>数据类型(type)</strong>是否相同，所以<code>==</code>又叫做<strong>松等于(loose-equality)</strong> ，<code>===</code>又叫做<strong>严格等于(strict-equality)</strong>。</p>
+<blockquote>
+<p><strong>注1：</strong>在比较时，若比较两端非<code>number</code>类型，则会自动转换为<code>number</code>类型再进行比较。</p>
+<p><strong>注2：</strong>如果比较两个非原始值，比如对象<code>object</code>（包括函数<code>function</code>和数组<code>array</code>）。因为这些值实际上是通过引用保存的，所以<code>==</code>和<code>===</code>比较都只是检查引用是否匹配，而不是基本值。</p>
+</blockquote>
+<p>例子一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"42"</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">42</span>;</div><div class="line"></div><div class="line">a == b;			<span class="comment">// true</span></div><div class="line">a === b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>例子二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> c = <span class="string">"1,2,3"</span>;</div><div class="line"></div><div class="line">a == c;		<span class="comment">// true</span></div><div class="line">b == c;		<span class="comment">// true</span></div><div class="line">a == b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>这时候就有一个问题，什么时候使用<code>==</code>，什么时候使用<code>===</code>呢？有如下几个基本规则：</p>
+<ul>
+<li>如果比较两端值的类型是<code>boolean</code>类型，<code>true/false</code>，则尽量使用<code>===</code>，而不用<code>==</code>；</li>
+<li>如果比较两端的值是些特别的值(<code>0</code>, <code>&quot;&quot;</code>, or <code>[]</code> – empty array)，则尽量使用<code>===</code>，而不用<code>==</code>；</li>
+<li>其他都用<code>==</code>吧</li>
+</ul>
+<h2 id="不等式"><a href="#不等式" class="headerlink" title="不等式"></a>不等式</h2><p>有等式当然就有不等式，有<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, 和 <code>&gt;=</code>四种不等式。一般用于比较<code>number</code>类型，但在JavaScript中<code>string</code>值也能被比较。</p>
+<blockquote>
+<p><strong>注：</strong>这里没有严格不等式。</p>
+</blockquote>
+<p>例子一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">41</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">"42"</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="string">"43"</span>;</div><div class="line"></div><div class="line">a &lt; b;		<span class="comment">// true</span></div><div class="line">b &lt; c;		<span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>例子二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">42</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">"foo"</span>;</div><div class="line"></div><div class="line">a &lt; b;		<span class="comment">// false</span></div><div class="line">a &gt; b;		<span class="comment">// false</span></div><div class="line">a == b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>例子二中 b值的类型是<code>string</code>，在参与不等式比较时，会强制转换为<code>NaN</code>，而<code>NaN</code>和谁都不相等，包括和它自己。</p>
 <h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符 +="></a>赋值运算符 +=</h2><ul>
 <li>必须有变量参与运算</li>
 <li>特殊：++递加- -递减，变量出现一次叫做使用一次。可为a++或++a</li>
@@ -224,6 +248,7 @@ var themeMenus = {};
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md" target="_blank" rel="external">You-Dont-Know-JS:: Up &amp; Going</a></li>
 </ul>
+<p>待续。</p>
 
       
     </div>
@@ -286,7 +311,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量相关"><span class="nav-number">1.</span> <span class="nav-text">字面量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字面量"><span class="nav-number">1.1.</span> <span class="nav-text">特殊字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见考察点"><span class="nav-number">1.2.</span> <span class="nav-text">常见考察点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种运算符"><span class="nav-number">2.</span> <span class="nav-text">各种运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符（关系运算符）"><span class="nav-number">2.1.</span> <span class="nav-text">比较运算符（关系运算符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.2.</span> <span class="nav-text">赋值运算符 +=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符-amp-amp-、-、"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑运算符 && 、||、!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truthy-amp-Falsy"><span class="nav-number">2.4.</span> <span class="nav-text">Truthy & Falsy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符—"><span class="nav-number">2.5.</span> <span class="nav-text">三元运算符— ? :</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量、作用域"><span class="nav-number">3.</span> <span class="nav-text">变量、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量相关"><span class="nav-number">1.</span> <span class="nav-text">字面量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字面量"><span class="nav-number">1.1.</span> <span class="nav-text">特殊字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见考察点"><span class="nav-number">1.2.</span> <span class="nav-text">常见考察点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种运算符"><span class="nav-number">2.</span> <span class="nav-text">各种运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符（关系运算符）"><span class="nav-number">2.1.</span> <span class="nav-text">比较运算符（关系运算符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等式"><span class="nav-number">2.2.</span> <span class="nav-text">等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式"><span class="nav-number">2.3.</span> <span class="nav-text">不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.4.</span> <span class="nav-text">赋值运算符 +=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符-amp-amp-、-、"><span class="nav-number">2.5.</span> <span class="nav-text">逻辑运算符 && 、||、!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truthy-amp-Falsy"><span class="nav-number">2.6.</span> <span class="nav-text">Truthy & Falsy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符—"><span class="nav-number">2.7.</span> <span class="nav-text">三元运算符— ? :</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量、作用域"><span class="nav-number">3.</span> <span class="nav-text">变量、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol>
     
     </div>
   </aside>
