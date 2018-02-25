@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="lvbin&#39;s Blog">
 <meta property="og:description" content="给闲置VPS增加点用处系列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-24T06:37:19.301Z">
+<meta property="og:updated_time" content="2018-02-25T11:03:20.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx+Hexo+SSL搭建个人站点">
 <meta name="twitter:description" content="给闲置VPS增加点用处系列">
@@ -202,6 +202,9 @@ var themeMenus = {};
 <h2 id="取消授权"><a href="#取消授权" class="headerlink" title="取消授权"></a>取消授权</h2><p>如果想把授权的域名取消该怎么办呢？因为免费证书如果不定期更新的话几个月就会自动过期，所以删掉本地部署时对应创建的几个文件就行啦。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rm -rf /etc/letsencrypt/live/www.example.com/</div><div class="line">rm -rf /etc/letsencrypt/archive/www.example.com/</div><div class="line">rm /etc/letsencrypt/renewal/www.example.com.conf</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>很多。。。</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-centos-7" target="_blank" rel="external">CentOS 7配置，参考</a></li>
+</ul>
 <p>本文完。</p>
 
       
