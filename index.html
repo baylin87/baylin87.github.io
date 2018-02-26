@@ -117,6 +117,73 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20180226-Hexo同步源文件至GitHub"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/02/26/20180226-Hexo同步源文件至GitHub/">Hexo同步源文件至GitHub</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/02/26/20180226-Hexo同步源文件至GitHub/" class="article-date">
+	  <time datetime="2018-02-26T09:00:34.000Z" itemprop="datePublished">二月 26, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            以前用Hexo最大的痛点就是想在其他电脑上写文章然后更新站点很麻烦，或者换系统后发现忘记备份源文件，然后以前写的东西又得通过各种方法找回再重新部署。没办法，静态站点就是这样。
+此时程序员思维就出现了，能不能在我每次写完新文章后自动备份源文件，或者我在hexo d的时候一起把我的.md文件也deploy上去。
+当然，方法各种，这里我选用的是 hexo-deployer-git 这个小插件。
+
+安装方法直接一句话搞定：
+1npm install hexo-deployer-git --save
+当然，作者说如果想使用最新版，可用下面的命令：
+
+对于npm版本低于4的用户
+1$ npm install git+git@github.com:hexojs/hexo-deployer-git.g...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/02/26/20180226-Hexo同步源文件至GitHub/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/杂七杂八/">杂七杂八</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20180118-JS面试基础知识点"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -759,80 +826,6 @@ What is Docker Machine ?Docker Machine is a tool that lets you install Docker En
 <!-- Table of Contents -->
 
   
-    <article id="post-20170805-docker网络管理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/05/20170805-docker网络管理/">docker单主机网络管理实践</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/05/20170805-docker网络管理/" class="article-date">
-	  <time datetime="2017-08-05T02:36:08.000Z" itemprop="datePublished">八月 5, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            前言容器作为应用，必然需要与外界通信，包括容器之间和外部网络。
-Docker网络从覆盖范围分
-
-单台主机上的容器网络★
-跨多台主机的容器网络
-
-
-容器间通信容器间通信的三种方式：
-
-IP
-Docker DNS Server
-joined
-
-IP通信Docker安装时，默认会在主机上创建三个网络，bridge、host、none。可用docker network ls查看
-none就是只有loopback的网络，无其他任何网卡。容器创建时可以用 --network=none来指定容器使用none网络
-适应场景：一些安全性要求较高且不需联网的应用，如生成随机密码的容器，放在none里防止窃取。
-host类似于虚拟机中共享主机网络的选项，即使容器共享其所在主机的网络栈，该容器的网络配置和主机...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/05/20170805-docker网络管理/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络管理/">网络管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟化/">虚拟化</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -941,6 +934,18 @@ host类似于虚拟机中共享主机网络的选项，即使容器共享其所�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2018/02/26/20180226-Hexo同步源文件至GitHub/">Hexo同步源文件至GitHub</a></h6>
+              <span>二月 26, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2018/01/18/20180118-JS面试基础知识点/">JS笔试基础知识点</a></h6>
               <span>一月 18, 2018</span>
             </div>
@@ -995,18 +1000,6 @@ host类似于虚拟机中共享主机网络的选项，即使容器共享其所�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/11/27/20171127-部署Nginx服务与基本配置/">部署Nginx服务与基本配置</a></h6>
-              <span>十一月 27, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1016,7 +1009,7 @@ host类似于虚拟机中共享主机网络的选项，即使容器共享其所�
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -1026,7 +1019,7 @@ host类似于虚拟机中共享主机网络的选项，即使容器共享其所�
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/OpenHab/" style="font-size: 14px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 14px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 18px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 16px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 12px;">面筋</a>
+      <a href="/tags/Android/" style="font-size: 18px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/GIPO/" style="font-size: 10px;">GIPO</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/ITIL/" style="font-size: 10px;">ITIL</a> <a href="/tags/Java/" style="font-size: 18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Netbackup/" style="font-size: 10px;">Netbackup</a> <a href="/tags/Nginx/" style="font-size: 12px;">Nginx</a> <a href="/tags/OpenHab/" style="font-size: 14px;">OpenHab</a> <a href="/tags/OpenStack/" style="font-size: 10px;">OpenStack</a> <a href="/tags/RAC/" style="font-size: 10px;">RAC</a> <a href="/tags/RMAN/" style="font-size: 10px;">RMAN</a> <a href="/tags/ansible/" style="font-size: 10px;">ansible</a> <a href="/tags/cluster/" style="font-size: 10px;">cluster</a> <a href="/tags/docker-machine/" style="font-size: 10px;">docker-machine</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/oracle/" style="font-size: 14px;">oracle</a> <a href="/tags/pfile/" style="font-size: 10px;">pfile</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/spfile/" style="font-size: 10px;">spfile</a> <a href="/tags/vSAN/" style="font-size: 10px;">vSAN</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/信息安全/" style="font-size: 10px;">信息安全</a> <a href="/tags/分级保护/" style="font-size: 10px;">分级保护</a> <a href="/tags/树莓派/" style="font-size: 18px;">树莓派</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/网络管理/" style="font-size: 10px;">网络管理</a> <a href="/tags/胡说八道/" style="font-size: 10px;">胡说八道</a> <a href="/tags/自动化运维/" style="font-size: 10px;">自动化运维</a> <a href="/tags/虚拟化/" style="font-size: 16px;">虚拟化</a> <a href="/tags/面筋/" style="font-size: 12px;">面筋</a>
     </div>
   </div>
 
@@ -1036,7 +1029,7 @@ host类似于虚拟机中共享主机网络的选项，即使容器共享其所�
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
