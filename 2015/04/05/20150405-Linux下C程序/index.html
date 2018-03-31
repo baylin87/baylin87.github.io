@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux下c程序 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="前言Linux下C语音使用的是gcc编译，学习全手动编译对理解编程过程十分有好处。">
+<meta name="keywords" content="Linux,C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下C程序">
+<meta property="og:url" content="http://binlv.top/2015/04/05/20150405-Linux下C程序/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="前言Linux下C语音使用的是gcc编译，学习全手动编译对理解编程过程十分有好处。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_1.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_2.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_3.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_4.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_5.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_6.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10">
+<meta property="og:updated_time" content="2017-09-09T04:28:55.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux下C程序">
+<meta name="twitter:description" content="前言Linux下C语音使用的是gcc编译，学习全手动编译对理解编程过程十分有好处。">
+<meta name="twitter:image" content="http://olvboulzy.bkt.clouddn.com/linuxc_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20150405-Linux下C程序" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Linux下C程序
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2015/04/05/20150405-Linux下C程序/" class="article-date">
+	  <time datetime="2015-04-05T06:39:07.000Z" itemprop="datePublished">四月 5, 2015</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Linux下C语音使用的是gcc编译，学习全手动编译对理解编程过程十分有好处。</p>
+<a id="more"></a>
+<h1 id="使用初步"><a href="#使用初步" class="headerlink" title="使用初步"></a>使用初步</h1><ul>
+<li>创建</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim a.c    //创建一个a.c文件</div></pre></td></tr></table></figure>
+<ul>
+<li>编译</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cc a.c</div></pre></td></tr></table></figure>
+<ul>
+<li>查看编译后文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls    //新产生了一个a.out的编译文件（可执行的文件颜色是不一样的）</div></pre></td></tr></table></figure>
+<ul>
+<li>执行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./a.c     //执行当前目录下的a.c文件</div></pre></td></tr></table></figure>
+<p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_1.png" alt="img"></p>
+<p><strong>说明：</strong> <em>gcc max.c hello.c  同时编译两个源文件-o main.out 表示输出文件名为main.out(默认为a.out)</em></p>
+<h1 id="多个源文件分而治之"><a href="#多个源文件分而治之" class="headerlink" title="多个源文件分而治之"></a>多个源文件分而治之</h1><p>用include 包含源文件max.c</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_2.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10" alt="img"></p>
+<h2 id="头文件与函数定义分离"><a href="#头文件与函数定义分离" class="headerlink" title="头文件与函数定义分离"></a>头文件与函数定义分离</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -c max.c -o max.o</div></pre></td></tr></table></figure>
+<p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_3.png" alt="img"></p>
+<p>max.o不可执行，只有是有main()函数入口的才可执行，而max.o只是编译后形成的一个类似与01代码的机器码而已<br>编译时要将人写的英文程序编译成机器码是消耗CPU性能的，如果编译内容较多，耗时就会比较长，而如果将一些不常改动的函数提前编译成机器码即“.o”文件，则可以大量节约编译所需时间。</p>
+<p>但是分离后不知道静态库文件（max.o）的类型还有参数，这时可以模仿系统#include “max.h”,创建max.h,而在max.h文件中只声明函数类型，参数类型等信息，即可告诉别人该函数该如何使用。</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_4.png" alt="img"></p>
+<p>在编译时依然需要加上max.o等文件以前编译，否则会出现无法找到该函数的错误</p>
+<h1 id="Makefile的编写"><a href="#Makefile的编写" class="headerlink" title="Makefile的编写"></a>Makefile的编写</h1><h2 id="创建Makefile"><a href="#创建Makefile" class="headerlink" title="创建Makefile"></a>创建Makefile</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi makefile</div></pre></td></tr></table></figure>
+<h2 id="编写Makefile"><a href="#编写Makefile" class="headerlink" title="编写Makefile"></a>编写Makefile</h2><p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_5.png" alt="img"></p>
+<p>递归编译，#表注释，gcc命令前必须用Tab键，不能用空格，不然会报错</p>
+<p>使用make命令执行，若修改后再次执行，则之前执行过生成的文件不会再被执行。</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/linuxc_6.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10" alt="img"></p>
+<blockquote>
+<p>参考慕课网学习教程:<a href="http://www.imooc.com/learn/248" target="_blank" rel="external">Linux C语言编程基本原理与实践</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/26/20150626-关于Excel的几点运用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          关于Excel的几点运用
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用初步"><span class="nav-number">2.</span> <span class="nav-text">使用初步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多个源文件分而治之"><span class="nav-number">3.</span> <span class="nav-text">多个源文件分而治之</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#头文件与函数定义分离"><span class="nav-number">3.1.</span> <span class="nav-text">头文件与函数定义分离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile的编写"><span class="nav-number">4.</span> <span class="nav-text">Makefile的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Makefile"><span class="nav-number">4.1.</span> <span class="nav-text">创建Makefile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写Makefile"><span class="nav-number">4.2.</span> <span class="nav-text">编写Makefile</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

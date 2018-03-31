@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nbu catalog报错处理办法 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="现象描述 环境说明：  NBU 7.7.3 Master Server Windows Server 2008R2 x64操作系统   NBU Master Server备份catalog一直报错，错误代码2  status详细信息如下： 123456789102017-12-8 8:40:23 - Info bpdbm (pid=12608) staging relational databas">
+<meta name="keywords" content="Netbackup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NBU catalog报错处理办法">
+<meta property="og:url" content="http://binlv.top/2017/12/08/20171208-NBU catalog报错处理办法/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="现象描述 环境说明：  NBU 7.7.3 Master Server Windows Server 2008R2 x64操作系统   NBU Master Server备份catalog一直报错，错误代码2  status详细信息如下： 123456789102017-12-8 8:40:23 - Info bpdbm (pid=12608) staging relational databas">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-10T14:19:26.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NBU catalog报错处理办法">
+<meta name="twitter:description" content="现象描述 环境说明：  NBU 7.7.3 Master Server Windows Server 2008R2 x64操作系统   NBU Master Server备份catalog一直报错，错误代码2  status详细信息如下： 123456789102017-12-8 8:40:23 - Info bpdbm (pid=12608) staging relational databas">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20171208-NBU catalog报错处理办法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      NBU catalog报错处理办法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/12/08/20171208-NBU catalog报错处理办法/" class="article-date">
+	  <time datetime="2017-12-08T04:19:12.000Z" itemprop="datePublished">十二月 8, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述"></a>现象描述</h1><ul>
+<li><p>环境说明：</p>
+<ul>
+<li>NBU 7.7.3 Master Server</li>
+<li>Windows Server 2008R2 x64操作系统</li>
+</ul>
+</li>
+<li><p>NBU Master Server备份catalog一直报错，错误代码2</p>
+<ul>
+<li><p>status详细信息如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">2017-12-8 8:40:23 - Info bpdbm (pid=12608) staging relational database files <span class="keyword">for</span> catalog backup</div><div class="line">2017-12-8 8:40:23 - Info bpdbm (pid=12608) staging NBAZDB backup to C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:24 - Info bpdbm (pid=12608) <span class="keyword">done</span> staging NBAZDB backup to C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:24 - Info bpdbm (pid=12608) staging NBDB backup to C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:30 - Info bpdbm (pid=12608) <span class="keyword">done</span> staging NBDB backup to C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:59 - Info bpdbm (pid=12608) validating NBAZDB backup <span class="keyword">in</span> C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:59 - Error bpdbm (pid=12608) error validating NBAZDB backup <span class="keyword">in</span> C:\Program Files\Veritas\NetBackupDB\staging.</div><div class="line">2017-12-8 8:40:59 - Info bpdbm (pid=12608) validating NBDB backup <span class="keyword">in</span> C:\Program Files\Veritas\NetBackupDB\staging</div><div class="line">2017-12-8 8:40:59 - Error bpdbm (pid=12608) error validating NBDB backup <span class="keyword">in</span> C:\Program Files\Veritas\NetBackupDB\staging.</div><div class="line">none of the requested files were backed up  (2)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>检查系统进程 已运行700+进程，怀疑进程过多导致Master hang死</p>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="尝试解决"><a href="#尝试解决" class="headerlink" title="尝试解决"></a>尝试解决</h1><h2 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h2><p>根据报错信息，定位<code>C:\Program Files\Veritas\NetBackupDB\staging</code>目录，删除该目录文件，重启服务后手动发起catalog备份，成功。</p>
+<p>第二天再发起再次报错，非长久之计。</p>
+<h2 id="第二次"><a href="#第二次" class="headerlink" title="第二次"></a>第二次</h2><p>报case，协助工程师收集cab。</p>
+<p>对于Windows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:\windows\system32\chcp 437</div><div class="line">C:\Program Files\Veritas\netbackup\bin\support\nbsu -use_reg_cmd 64 (<span class="keyword">for</span> 64bit)</div></pre></td></tr></table></figure>
+<p>执行nbsu到network service卡住，询问工程师终止命令，执行如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\Veritas\netbackup\bin\support\nbsu -c -use_reg_cmd 64</div></pre></td></tr></table></figure>
+<p>产生LOG 的路径:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\Veritas\netbackup\bin\support\output\nbsu (后缀名是cab)</div></pre></td></tr></table></figure>
+<p>后操作如下</p>
+<ol>
+<li><p>Delete the outstanding nbtelemetry.exe processes in task manager, this in turn stopped the nbtelesched.exe processes. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tasklist</div><div class="line">taskkill /im nbtelemetry.exe /f</div></pre></td></tr></table></figure>
+<p>强制结束进程</p>
+</li>
+<li><p>Once these were deleted, went into directory Program files\Veritas\Netbackup\bin<br>Renamed nbtelemetry.exe and nbtelesched.exe to nbtelemetry.exe.old and nbtelesched.exe.old. </p>
+<p>若无法重命名，重启机器再修改</p>
+</li>
+<li><p>Run regedit and go to the following key<br>HKLM(HKEY_LOCAL_MACHINE)\Software\VERITAS\NetBackup\CurrentVersion\Config\TELEMETRY_UPLOAD<br>Changed TELEMETRY_UPLOAD from YES to NO under the registry editor.</p>
+<p>再次发起catalog备份，正常。</p>
+</li>
+</ol>
+<p>观察几天，进程数不超过100，且备份catalog不报错.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="NBU-catalog"><a href="#NBU-catalog" class="headerlink" title="NBU catalog"></a>NBU catalog</h2><p>NetBackup自身有一索引数据库，主要记录每次备份的相关信息。比如从哪个Client备<br>份的，保留多长时间等。 </p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Netbackup/">Netbackup</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/20/20171220-RHEL7.0日志分析记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          RHEL7.0日志分析记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/05/20171205-Oracle参数文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Oracle参数文件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#现象描述"><span class="nav-number">1.</span> <span class="nav-text">现象描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尝试解决"><span class="nav-number">2.</span> <span class="nav-text">尝试解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次"><span class="nav-number">2.1.</span> <span class="nav-text">第一次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二次"><span class="nav-number">2.2.</span> <span class="nav-text">第二次</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NBU-catalog"><span class="nav-number">3.1.</span> <span class="nav-text">NBU catalog</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
