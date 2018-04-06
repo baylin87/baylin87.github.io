@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【翻译】mdn：transform-function | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="原文地址： MDN : transform-function transform-function用于对元素的显示做变换。通常，这种变换可以由矩阵表示，并且可以使用每个点上的矩阵乘法来确定所得到的图像。 以下为3D图像关于各种转换函数的定义。">
+<meta name="keywords" content="CSS,transform">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】MDN：transform-function">
+<meta property="og:url" content="http://binlv.top/2018/03/21/20180321-MDN：transform-function/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="原文地址： MDN : transform-function transform-function用于对元素的显示做变换。通常，这种变换可以由矩阵表示，并且可以使用每个点上的矩阵乘法来确定所得到的图像。 以下为3D图像关于各种转换函数的定义。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-rotate_19.5.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scale_2_2.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scaleX_2.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scaleY_2.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translate_2.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translateX_2.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translateY_2.png">
+<meta property="og:updated_time" content="2018-03-31T08:31:10.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】MDN：transform-function">
+<meta name="twitter:description" content="原文地址： MDN : transform-function transform-function用于对元素的显示做变换。通常，这种变换可以由矩阵表示，并且可以使用每个点上的矩阵乘法来确定所得到的图像。 以下为3D图像关于各种转换函数的定义。">
+<meta name="twitter:image" content="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-rotate_19.5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20180321-MDN：transform-function" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      【翻译】MDN：transform-function
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/03/21/20180321-MDN：transform-function/" class="article-date">
+	  <time datetime="2018-03-21T05:50:33.000Z" itemprop="datePublished">三月 21, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function" target="_blank" rel="external">MDN : transform-function</a></p>
+<p><strong>transform-function</strong>用于对元素的显示做变换。通常，这种变换可以由矩阵表示，并且可以使用每个点上的矩阵乘法来确定所得到的图像。</p>
+<p>以下为3D图像关于各种转换函数的定义。</p>
+<a id="more"></a>
+<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective()"></a>perspective()</h3><p> <code>perspective()</code> 这个CSS函数定义了 z=0平面与用户之间的距离，以便给三维定位元素一定透视度。当每个3D元素的z&gt;0时会显得比较大，而在z&lt;0时会显得比较小。其影响的程度由这个属性的值来决定。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">perspective</span>(<span class="selector-tag">l</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p>l</p>
+<p>该参数是一个 <code>length</code>， 给定从用户（显示屏）到z = 0平面的距离。 它用于将透视转换(3D)应用于元素。 如果它是0或负值，则不应用3D变换。</p>
+</li>
+</ul>
+<h3 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-rotate_19.5.png" alt="rotate()"> <code>rotate()</code> 这个CSS 函数 定义一个旋转属性，将元素在不变形的情况下旋转到不动点周围( <code>transform-origin</code>属性指定) 。 移动量由指定角度定义；如果为正值，则运动将为顺时针，如果为负值，则为逆时针 。 180°的旋转称为点反射 (<em>point reflection</em>)。</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">rotate</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为 <code>angle</code>， 代表旋转的角度。正角表示顺时针旋转，负角表示逆时针旋转。</p>
+</li>
+</ul>
+<h3 id="rotate3d"><a href="#rotate3d" class="headerlink" title="rotate3d()"></a>rotate3d()</h3><p> <code>rotate3d()</code> 这个CSS 函数定义一个3D旋转功能，该旋转使元素能够绕固定轴移动而不变形。 其中移动量由指定角度定义；如果为正值，则运动将为顺时针，如果为负值，则为逆时针。</p>
+<p>在三维空间中，旋转有三个自由度，各表示某条旋转轴。 旋转轴由[x，y，z]向量定义，且过原点（由 <code>transform-origin</code> CSS属性定义）。 如果向量没有标准化，即它的三个坐标的平方之和不是1，它将在内部被标准化。 不可标准化的向量，如空向量[0,0,0]，将导致旋转不被应用，但不会影响整个CSS属性。</p>
+<p>注意：相对于平面上的旋转，三维旋转的组成通常不是可交换位置顺序的，这意味着旋转的应用顺序是至关重要的。</p>
+<h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">rotate3d</span>(<span class="selector-tag">x</span>, <span class="selector-tag">y</span>, <span class="selector-tag">z</span>, <span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>x</em></p>
+<p>该参数为”<code>number</code>“ 类型值， 描述旋转轴向量的x坐标 。</p>
+</li>
+<li><p><em>y</em></p>
+<p>该参数为 “<code>number</code>“ 类型值，描述旋转轴向量的y坐标。</p>
+</li>
+<li><p><em>z</em></p>
+<p>该参数为 “<code>number</code>“ 类型值，描述旋转轴向量的z坐标。</p>
+</li>
+<li><p><em>a</em></p>
+<p>该参数为 “<code>angle</code>“ 代表旋转的角度 。 正角度表示顺时针旋转，负角度表示逆时针旋转 。</p>
+</li>
+</ul>
+<h3 id="rotateX"><a href="#rotateX" class="headerlink" title="rotateX()"></a>rotateX()</h3><p> <code>rotateX()</code> 这个CSS 函数定义了将元素在横坐标上旋转而不使其变形的方法。 其运动的程度由指定的角度来定义；如果是正的，则为顺时针旋转，如果是负的，则是逆时针旋转。</p>
+<p>旋转所经过的原点，由 <code>transform-origin</code> CSS属性定义。.</p>
+<p><code>rotateX(a)</code>是 <code>rotate3D(1, 0, 0, a)</code>的简写形式。</p>
+<p>注意： 与平面上的旋转相反，3D旋转的组成通常也是不可交换顺序的；这意味着旋转的应用顺序至关重要。</p>
+<h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">rotateX</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为 “<code>angle</code>“， 代表旋转的角度， 正角表示顺时针旋转，负角表示逆时针旋转。</p>
+</li>
+</ul>
+<h3 id="rotateY"><a href="#rotateY" class="headerlink" title="rotateY()"></a>rotateY()</h3><p> <code>rotateY()</code> 这个CSS 函数定义了将元素在纵坐标上旋转而不使其变形的方法。 其运动的程度由指定的角度来定义；如果是正的，则为顺时针旋转，如果是负的，则是逆时针旋转。</p>
+<p>旋转所经过的原点，由 <code>transform-origin</code> CSS属性定义。</p>
+<p><code>rotateY(a)</code> 是 <code>rotate3D(0, 1, 0, a)</code> 的简写形式。</p>
+<p>注意： 与平面上的旋转相反，3D旋转的组成通常也是不可交换顺序的；这意味着旋转的应用顺序至关重要。</p>
+<h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">rotateY</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为 “<code>angle</code>“ 代表旋转的角度， 正角表示顺时针旋转，负角表示逆时针旋转。</p>
+</li>
+</ul>
+<h3 id="rotateZ"><a href="#rotateZ" class="headerlink" title="rotateZ()"></a>rotateZ()</h3><p> <code>rotateZ()</code>这个CSS 函数定义了将元素在z轴上旋转而不使其变形的方法。 其运动的程度由指定的角度来定义；如果是正的，则为顺时针旋转，如果是负的，则是逆时针旋转。</p>
+<p>旋转所经过的原点，由 <code>transform-origin</code> CSS属性定义。</p>
+<p><code>rotateZ(a)</code>是 <code>rotate3D(0, 0, 1, a)</code> 的简写形式。</p>
+<p>注意： 与平面上的旋转相反，3D旋转的组成通常也是不可交换顺序的；这意味着旋转的应用顺序至关重要。</p>
+<h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">rotateZ</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为 “<code>angle</code>“ 代表旋转的角度， 正角表示顺时针旋转，负角表示逆时针旋转。</p>
+</li>
+</ul>
+<h3 id="scale"><a href="#scale" class="headerlink" title="scale()"></a><code>scale()</code></h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scale_2_2.png" alt="scale()"></p>
+<p>The <code>scale()</code> CSS 函数可改变元素的大小。 它可以增大或减小元素的大小，并且缩放量由矢量定义，并且它可以使在一个方向上比另一个方向更多。</p>
+<p>这种变换的特点是矢量的坐标可定义在每个不同方向上各子完成一定比例缩放。如果矢量的两个坐标相等，则缩放是均匀的或各向同性的，并且元素的形状被保留。在这种情况下，缩放函数定义了一个同调变换。</p>
+<p>当超出 <code>[-1, 1]</code>范围外时，缩放将在坐标方向上放大元素；当在该范围内时，它在该方向收缩元素。当等于1时，它什么也不做，当它为负时，它执行点反射和大小修改。</p>
+<p>注意： <code>scale()</code> 函数仅在欧几里德平面(2D)中应用转换。要在空间中进行缩放，必须使用 <code>scale3D()</code> 函数。</p>
+<h4 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">scale</span>(<span class="selector-tag">sx</span>) 或</div><div class="line"><span class="selector-tag">scale</span>(<span class="selector-tag">sx</span>, <span class="selector-tag">sy</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>sx</em></p>
+<p>该参数为 “<code>number</code>“ 类型值， 代表缩放矢量的横坐标。</p>
+</li>
+<li><p><strong>sy</strong></p>
+<p>该参数为 “<code>number</code>“ 类型值，代表缩放矢量的纵坐标 。 如果不存在，则其默认值为 <strong>sx</strong>，从而导致保持元素形状进行均匀缩放。</p>
+</li>
+</ul>
+<h3 id="scale3d"><a href="#scale3d" class="headerlink" title="scale3d()"></a><code>scale3d()</code></h3><p> <code>scale3d()</code> CSS 函数可改变元素的大小。由于缩放的量由矢量定义，因此可以改变不同方向的尺寸。</p>
+<p>这种变换的特点是矢量的坐标定义在每个方向上完成多少缩放。如果矢量的三个坐标都相等，则缩放是均匀的或各向同性的，并且保持元素形状。在这种情况下，这个缩放函数就是定义了一个同调变换。</p>
+<p>当超出[-1，1]的范围之外时，缩放比例将在坐标方向上放大元素；当在[-1，1]范围内时，它在当前方向收缩元素。当等于1时，它什么也不做，当它为负时，它执行点反射和大小修改。</p>
+<h4 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">scale3d</span>(<span class="selector-tag">sx</span>, <span class="selector-tag">sy</span>, <span class="selector-tag">sz</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>sx</em></p>
+<p>该参数为 “<code>number</code>“ 类型值， 代表缩放矢量的横坐标。</p>
+</li>
+<li><p><em>sy</em></p>
+<p>该参数为 “<code>number</code>“ 类型值， 代表缩放矢量的纵坐标。</p>
+</li>
+<li><p><em>sz</em></p>
+<p>该参数为 “<code>number</code>“ 类型值， 代表缩放矢量的z轴坐标。</p>
+</li>
+</ul>
+<h3 id="scaleX"><a href="#scaleX" class="headerlink" title="scaleX()"></a>scaleX()</h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scaleX_2.png" alt="scaleX()"> <code>scaleX()</code> 这个CSS函数是用一个常数因子来修改每个单元点的横坐标，在比例因子是1的情况下该函数是恒等变换。 缩放不是各向同性的，元素的角度也不守恒。</p>
+<p><code>scaleX(sx)</code> 是 <code>scale(sx, 1)</code> 和 <code>scale3d(sx, 1, 1)</code> 的简写形式。</p>
+<p><code>scaleX(-1)</code> 表示通过原点的垂直轴定义轴对称（由 <code>transform-origin</code> 属性指定）。</p>
+<h4 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">scaleX</span>(<span class="selector-tag">s</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-8"><a href="#参数-8" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>s</em></p>
+<p>该参数为 “<code>number</code>“ 类型值， 表示在元素的每个点的横坐标上应用的缩放因子。</p>
+</li>
+</ul>
+<h3 id="scaleY"><a href="#scaleY" class="headerlink" title="scaleY()"></a>scaleY()</h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-scaleY_2.png" alt="scaleY()"></p>
+<p> <code>scaleY()</code> 这个 CSS函数用一个常数因子修改每个元素点的纵坐标，在比例因子是1的情况下该函数是恒等变换。 缩放不是各向同性的，元素的角度不守恒。</p>
+<p><code>scaleY(sy)</code> 是 <code>scale(1, sy)</code> 和 <code>scale3d(1, sy, 1)</code> 的简写形式。</p>
+<p><code>scaleY(-1)</code> 定义了通过原点的水平轴的轴对称（由 <code>transform-origin</code> 属性指定）。</p>
+<h4 id="语法-9"><a href="#语法-9" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">scaleY</span>(<span class="selector-tag">s</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-9"><a href="#参数-9" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>s</em></p>
+<p>该参数为 “<code>number</code>“ 类型值，表示在元素的每个点的纵坐标上应用的缩放因子。</p>
+</li>
+</ul>
+<h3 id="scaleZ"><a href="#scaleZ" class="headerlink" title="scaleZ()"></a>scaleZ()</h3><p> <code>scaleZ()</code> 这个CSS函数是用一个常数因子来修改每个单元点的z轴坐标，在比例因子是1的情况下该函数是恒等变换。 缩放不是各向同性的，元素的角度也不守恒。</p>
+<p><code>scaleZ(sz)</code> 是 <code>scale3d(1, 1, sz)</code> 的简写形式。</p>
+<p><code>scaleZ(-1)</code> 定义了通过原点的z轴的轴对称（由 <code>transform-origin</code> 属性指定）。</p>
+<h4 id="语法-10"><a href="#语法-10" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">scaleZ</span>(<span class="selector-tag">s</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-10"><a href="#参数-10" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>s</em></p>
+<p>该参数为 “<code>number</code>“ 类型值，表示在元素的每个点的z轴坐标上应用的缩放因子。</p>
+</li>
+</ul>
+<h3 id="skew"><a href="#skew" class="headerlink" title="skew()"></a>skew()</h3><p> <code>skew()</code> 这个CSS函数是一种用于拉伸，或者说是平移，该函数会使得在每个方向上扭曲元素上的每个点以一定角度。这是通过将每个坐标增加一个与指定角度成比例的值和到原点的距离来完成的。离原点越远，拉伸的值就越大。</p>
+<h4 id="语法-11"><a href="#语法-11" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">skew</span>(<span class="selector-tag">ax</span>)       或</div><div class="line"><span class="selector-tag">skew</span>(<span class="selector-tag">ax</span>, <span class="selector-tag">ay</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-11"><a href="#参数-11" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>ax</em></p>
+<p>该参数为一个角度 “<code>angle</code>“ ， 表示用于沿着横坐标扭曲元素的角度 。</p>
+</li>
+<li><p><em>ay</em></p>
+<p>该参数为一个角度 “<code>angle</code>“ ， 表示用于沿纵坐标扭曲元素的角度 。</p>
+</li>
+</ul>
+<h3 id="skewX"><a href="#skewX" class="headerlink" title="skewX()"></a>skewX()</h3><p> <code>skewX()</code> 这个CSS函数是用于水平拉伸，它将元素的每个点在水平方向上扭曲一定角度。这是通过将横坐标增加一个与指定角度成比例的值以及到原点的距离来完成的。离原点越远，拉伸的值就越大。</p>
+<h4 id="语法-12"><a href="#语法-12" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">skewX</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-12"><a href="#参数-12" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为一个角度 “<code>angle</code>“ ， 表示用于沿着横坐标扭曲元素的角度。</p>
+</li>
+</ul>
+<h3 id="skewY"><a href="#skewY" class="headerlink" title="skewY()"></a>skewY()</h3><p> <code>skewY()</code> 这个CSS函数是用于垂直拉伸，它将元素的每个点在垂直方向上扭曲一定角度。这是通过将纵坐标增加一个与指定角度成比例的值以及到原点的距离来完成的。离原点越远，拉伸的值就越大。</p>
+<h4 id="语法-13"><a href="#语法-13" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">skewY</span>(<span class="selector-tag">a</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-13"><a href="#参数-13" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>a</em></p>
+<p>该参数为一个角度 “<code>angle</code>“ ，表示用于沿着纵坐标扭曲元素的角度。</p>
+</li>
+</ul>
+<h3 id="translate"><a href="#translate" class="headerlink" title="translate()"></a>translate()</h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translate_2.png" alt="translate()"> <code>translate()</code> 这个CSS 函数用于移动元素在平面上的位置。这种变换的特点是矢量的坐标定义了它在每个方向上的移动量。</p>
+<h4 id="语法-14"><a href="#语法-14" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">translate</span>(<span class="selector-tag">tx</span>)       或</div><div class="line"><span class="selector-tag">translate</span>(<span class="selector-tag">tx</span>, <span class="selector-tag">ty</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-14"><a href="#参数-14" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>tx</em></p>
+<p>该参数为 “<code>length</code>“ ，表示要移动矢量的横坐标。</p>
+</li>
+<li><p><em>ty</em></p>
+<p>该参数为 “<code>length</code>“ ，表示要移动矢量的纵坐标。 如果不写，则默认与 <strong>tx </strong>值相等，例如 :  <code>translate(2)</code> 表示 <code>translate(2, 2)</code>。</p>
+</li>
+</ul>
+<h3 id="translate3d"><a href="#translate3d" class="headerlink" title="translate3d()"></a>translate3d()</h3><p> <code>translate3d()</code> 这个CSS 函数用于移动元素在3D空间中的位置。 这种变换的特点是三维矢量的坐标定义了它在每个方向上的移动量。</p>
+<h4 id="语法-15"><a href="#语法-15" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">translate3d</span>(<span class="selector-tag">tx</span>, <span class="selector-tag">ty</span>, <span class="selector-tag">tz</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-15"><a href="#参数-15" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>tx</em></p>
+<p>该参数为 “<code>length</code>“ ，代表移动矢量的横坐标。</p>
+</li>
+<li><p><em>ty</em></p>
+<p>该参数为 “<code>length</code>“ ，代表移动矢量的纵坐标。</p>
+</li>
+<li><p><em>tz</em></p>
+<p>该参数为 “<code>length</code>“ 代表移动矢量的z轴坐标。 该值不能使用百分比 “<code>percentage</code>“ ；如果使用会被认为是无效属性。</p>
+</li>
+</ul>
+<h3 id="translateX"><a href="#translateX" class="headerlink" title="translateX()"></a><code>translateX()</code></h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translateX_2.png" alt="translateX()"> <code>translateX()</code> 这个CSS 函数用于在平面上水平移动元素。 这个转换的特点是 “<code>length</code>“ 定义了它的水平移动量。</p>
+<p><code>translateX(tx)</code> 是 <code>translate(tx, 0)</code>的简写形式。</p>
+<h4 id="语法-16"><a href="#语法-16" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">translateX</span>(<span class="selector-tag">t</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-16"><a href="#参数-16" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>t</em></p>
+<p>该参数为 “<code>length</code>“ ，代表移动矢量的横坐标。</p>
+</li>
+</ul>
+<h3 id="translateY"><a href="#translateY" class="headerlink" title="translateY()"></a>translateY()</h3><p><img src="http://olvboulzy.bkt.clouddn.com/20180321-transform-functions-translateY_2.png" alt="translateY()"> <code>translateY()</code> 这个CSS 函数用于在平面上垂直移动元素。 这个转换的特点是通过 “<code>length</code>“ 定义了它的垂直移动量。</p>
+<p><code>translateY(ty)</code> 是 <code>translate(0, ty)</code>的简写形式。</p>
+<h4 id="语法-17"><a href="#语法-17" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">translateY</span>(<span class="selector-tag">t</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-17"><a href="#参数-17" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>t</em></p>
+<p>该参数为 “<code>length</code>“ 代表移动矢量的横坐标。该参数不能使用百分比 “<code>percentage</code>“ ；如果使用百分比形式，会被认为是无效参数。</p>
+</li>
+</ul>
+<h3 id="translateZ"><a href="#translateZ" class="headerlink" title="translateZ()"></a>translateZ()</h3><p> <code>translateZ()</code> 这个CSS 函数用于3D空间的z轴方向移动元素， 这个转换的特点是通过 “<code>length</code>“ 定义了它的z轴方向移动量。</p>
+<p><code>translateZ(tz)</code> 是 <code>translate3d(0, 0, tz)</code>的简写形式。</p>
+<h4 id="语法-18"><a href="#语法-18" class="headerlink" title="语法"></a>语法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">translateZ</span>(<span class="selector-tag">t</span>)</div></pre></td></tr></table></figure>
+<h4 id="参数-18"><a href="#参数-18" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><p><em>t</em></p>
+<p>该参数是 “<code>length</code>“ ，代表移动矢量的z轴坐标。</p>
+</li>
+</ul>
+<p>本文完。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/外文翻译/">外文翻译</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transform/">transform</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/06/20180406-从new操作符看原型与原型链/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          从new操作符看原型与原型链
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/13/20180313-从onmouseover和onmouseenter说起/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">从onmouseover和onmouseenter说起</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
