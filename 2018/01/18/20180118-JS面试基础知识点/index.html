@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js笔试基础知识点 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta name="keywords" content="面筋,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS笔试基础知识点">
+<meta property="og:url" content="http://binlv.top/2018/01/18/20180118-JS面试基础知识点/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-25T03:07:45.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS笔试基础知识点">
+<meta name="twitter:description" content="听公开课讲得一些JS笔试中容易出现的知识点。 与其说是知识点，不如说是—“那些年走过的JS大坑” 一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20180118-JS面试基础知识点" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      JS笔试基础知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/01/18/20180118-JS面试基础知识点/" class="article-date">
+	  <time datetime="2018-01-18T12:20:00.000Z" itemprop="datePublished">一月 18, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>听公开课讲得一些JS笔试中容易出现的知识点。</p>
+<p>与其说是知识点，不如说是—“那些年走过的JS大坑”</p>
+<p>一般关于JS的笔试会走两极端—-要么很基础的知识点，要么考察最新JS框架（或结合公司已使用技术）</p>
+<a id="more"></a>
+<h1 id="字面量相关"><a href="#字面量相关" class="headerlink" title="字面量相关"></a>字面量相关</h1><p>定义：计算机能识别类型的数据。</p>
+<h2 id="特殊字面量"><a href="#特殊字面量" class="headerlink" title="特殊字面量"></a>特殊字面量</h2><p>顾名思义，计算机识别不了的—NaN，指的不是一个正常的数。</p>
+<h2 id="常见考察点"><a href="#常见考察点" class="headerlink" title="常见考察点"></a>常见考察点</h2><ul>
+<li>正数/0=正无穷Infinity</li>
+<li>0/0=NaN</li>
+<li>parseInt(“string”); 将字符串转为整数的数字类型，条件：纯数字字符串或数字开头字符串，其他为NaN</li>
+<li>数据类型参与数值运算：<ul>
+<li>”数据类型—数字、字符串、undefined、布尔、null”；</li>
+<li>”数学运算— + - * / %”。</li>
+<li>非数字参与数学运算会把非数字转换（<strong>隐式转换</strong>）为数字再参与运算。除null、false转换为0，数字字符串转为数字，其余包括undefined为NaN</li>
+</ul>
+</li>
+</ul>
+<h1 id="各种运算符"><a href="#各种运算符" class="headerlink" title="各种运算符"></a>各种运算符</h1><h2 id="比较运算符（关系运算符）"><a href="#比较运算符（关系运算符）" class="headerlink" title="比较运算符（关系运算符）"></a>比较运算符（关系运算符）</h2><ul>
+<li><code>==</code> 相等  <code>===</code>全等于，即除判断值是否相等，还要判断数据类型，如<code>1</code>和<code>true</code>。<code>!=</code> 不相等（与<code>==</code>相反）</li>
+<li>比较运算的结果就是布尔值，<code>true</code>/<code>false</code></li>
+<li>其他数据参与比较运算时，也会隐式转换为数字参与运算</li>
+<li><code>NaN</code>参与的话，无论与谁都是不等于<code>false</code></li>
+<li><code>IsNaN()</code>方法，判断一个数是否能转为<code>NaN</code>，能<code>true</code>，否<code>false</code>，能转的有：非数字字符串、<code>undefined</code></li>
+</ul>
+<h2 id="等式"><a href="#等式" class="headerlink" title="等式"></a>等式</h2><p>上面说到了比较运算符 <code>==</code> 和<code>===</code>，下面总结一下与等式(包括<code>==</code>, <code>===</code>, <code>!=</code>, 和 <code>!==</code>)相关的东西。</p>
+<p>首先说下<code>==</code>和<code>===</code>的区别，<code>==</code>只检查<strong>值(value)</strong>是否相同，而<code>===</code>不仅比较<strong>值(value)</strong>还要检查<strong>数据类型(type)</strong>是否相同，所以<code>==</code>又叫做<strong>松等于(loose-equality)</strong> ，<code>===</code>又叫做<strong>严格等于(strict-equality)</strong>。</p>
+<blockquote>
+<p><strong>注1：</strong>在比较时，若比较两端非<code>number</code>类型，则会自动转换为<code>number</code>类型再进行比较。</p>
+<p><strong>注2：</strong>如果比较两个非原始值，比如对象<code>object</code>（包括函数<code>function</code>和数组<code>array</code>）。因为这些值实际上是通过引用保存的，所以<code>==</code>和<code>===</code>比较都只是检查引用是否匹配，而不是基本值。</p>
+</blockquote>
+<p>例子一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"42"</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">42</span>;</div><div class="line"></div><div class="line">a == b;			<span class="comment">// true</span></div><div class="line">a === b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>例子二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> c = <span class="string">"1,2,3"</span>;</div><div class="line"></div><div class="line">a == c;		<span class="comment">// true</span></div><div class="line">b == c;		<span class="comment">// true</span></div><div class="line">a == b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>这时候就有一个问题，什么时候使用<code>==</code>，什么时候使用<code>===</code>呢？有如下几个基本规则：</p>
+<ul>
+<li>如果比较两端值的类型是<code>boolean</code>类型，<code>true/false</code>，则尽量使用<code>===</code>，而不用<code>==</code>；</li>
+<li>如果比较两端的值是些特别的值(<code>0</code>, <code>&quot;&quot;</code>, or <code>[]</code> – empty array)，则尽量使用<code>===</code>，而不用<code>==</code>；</li>
+<li>其他都用<code>==</code>吧</li>
+</ul>
+<h2 id="不等式"><a href="#不等式" class="headerlink" title="不等式"></a>不等式</h2><p>有等式当然就有不等式，有<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, 和 <code>&gt;=</code>四种不等式。一般用于比较<code>number</code>类型，但在JavaScript中<code>string</code>值也能被比较。</p>
+<blockquote>
+<p><strong>注：</strong>这里没有严格不等式。</p>
+</blockquote>
+<p>例子一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">41</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">"42"</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="string">"43"</span>;</div><div class="line"></div><div class="line">a &lt; b;		<span class="comment">// true</span></div><div class="line">b &lt; c;		<span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>例子二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">42</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">"foo"</span>;</div><div class="line"></div><div class="line">a &lt; b;		<span class="comment">// false</span></div><div class="line">a &gt; b;		<span class="comment">// false</span></div><div class="line">a == b;		<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>例子二中 b值的类型是<code>string</code>，在参与不等式比较时，会强制转换为<code>NaN</code>，而<code>NaN</code>和谁都不相等，包括和它自己。</p>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符 +="></a>赋值运算符 +=</h2><ul>
+<li>必须有变量参与运算</li>
+<li>特殊：++递加- -递减，变量出现一次叫做使用一次。可为a++或++a</li>
+</ul>
+<h2 id="逻辑运算符-amp-amp-、-、"><a href="#逻辑运算符-amp-amp-、-、" class="headerlink" title="逻辑运算符 &amp;&amp; 、||、!"></a>逻辑运算符 &amp;&amp; 、||、!</h2><ul>
+<li>规律：逻辑与和逻辑或，答案都与第一个操作数a能够判读为true/false有关，如判断为假的有—null、undefined、0、NaN、” ” 空字符串；判断为真—非0非NaN数字、非空字符串</li>
+<li>与运算&amp;&amp;：a&amp;&amp;b，如果a为true，则结果就是b；如果a为false，则为false</li>
+<li>逻辑或||：a||b，如果a为true，结果就是true；如果a为false，则结果为b</li>
+<li>逻辑非：</li>
+</ul>
+<h2 id="Truthy-amp-Falsy"><a href="#Truthy-amp-Falsy" class="headerlink" title="Truthy &amp; Falsy"></a>Truthy &amp; Falsy</h2><p>总结一下一些奇葩的<code>boolean</code>类型，一般性的布尔值没什么好说的。特别提下一些会被判断为truthy和falsy。</p>
+<p>一些特别的”falsy”如下：</p>
+<ul>
+<li><code>&quot;&quot;</code> (empty string)</li>
+<li><code>0</code>，<code>-0</code>，<code>NaN</code> (invalid number)</li>
+<li><code>null</code>,<code>undefined</code></li>
+<li><code>false</code></li>
+</ul>
+<p>一些特别的“truthy”如下:</p>
+<ul>
+<li><code>&quot;hello&quot;</code></li>
+<li><code>42</code></li>
+<li><code>true</code></li>
+<li><code>[ ]</code>, <code>[ 1, &quot;2&quot;, 3 ]</code> (arrays)</li>
+<li><code>{ }</code>, <code>{ a: 42 }</code> (objects)</li>
+<li><code>function foo() { .. }</code> (functions)</li>
+</ul>
+<h2 id="三元运算符—"><a href="#三元运算符—" class="headerlink" title="三元运算符— ? :"></a>三元运算符— ? :</h2><p>或作为条件分支语句</p>
+<p>​         Boolean_expression? true_value : false_value;</p>
+<h1 id="变量、作用域"><a href="#变量、作用域" class="headerlink" title="变量、作用域"></a>变量、作用域</h1><ul>
+<li>JS中无{}块作用域，只有函数结构function封住一个作用域。</li>
+<li>局部变量/全局变量。不同作用域中如都定义了同一个名字的变量，有一个查找作用域链—从内到外(如本层(层指的是function)有直接使用，如无依次向外层查找)</li>
+<li>如变量未定义直接使用会提示引用错误，但可先使用再定义变量，但会导致变量声明提升问题undefined—JS解释器解释代码时，会将所有变量定义的过程提升到作用域代码最前面，相当于先定义了，但未赋值，默认undefined。</li>
+</ul>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>这个必考。。。</p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>函数就是闭包。</li>
+<li>函数是一种对象型数据，对象型数据创建时有一个数据原型，如果将一个对象型数据赋值给变量，则变量中存的不是原型，而是指针/地址</li>
+<li>如果将一个变量赋值给另一个变量，相当于将地址复制一份给另一个变量</li>
+<li>每一个通过function定义的函数都是一个新的闭包</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(n+ i++);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = fo();</div><div class="line">f(<span class="number">20</span>);</div><div class="line">fo()(<span class="number">20</span>);</div><div class="line">fo()(<span class="number">10</span>);</div><div class="line">f(<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">20</span>   <span class="comment">//n=20,i=0,n+i=20,i++后得1，输出20</span></div><div class="line"><span class="number">20</span>	 <span class="comment">//创建新闭包，结果同上</span></div><div class="line"><span class="number">10</span>	 <span class="comment">//同理</span></div><div class="line"><span class="number">11</span>	 <span class="comment">//由于前f(20);影响，i为1，第二次执行f();则为11，I、i++后得3</span></div></pre></td></tr></table></figure>
+<p>示例二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line">arr2[<span class="number">0</span>] = <span class="number">8</span>;</div><div class="line">arr1.push(arr1.shift());</div><div class="line"><span class="built_in">console</span>.log(arr1);</div><div class="line"><span class="built_in">console</span>.log(arr2);</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>数组也是对象型数据，存储给变量时，给的是指向数据原型的地址。</li>
+<li>shift();</li>
+<li>push();</li>
+</ul>
+<p>结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">5.6</span>,<span class="number">7</span>,<span class="number">8</span>]	<span class="comment">//arr2[0]=8;    #[8,5,6,7]</span></div><div class="line">[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]	<span class="comment">//arr1.push(arr1.shift());	#[5,6,7,8]</span></div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md" target="_blank" rel="external">You-Dont-Know-JS:: Up &amp; Going</a></li>
+</ul>
+<p>待续。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面筋/">面筋</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/26/20180226-Hexo同步源文件至GitHub/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Hexo同步源文件至GitHub
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/20/20171220-RHEL7.0日志分析记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">RHEL7.0日志分析记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量相关"><span class="nav-number">1.</span> <span class="nav-text">字面量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊字面量"><span class="nav-number">1.1.</span> <span class="nav-text">特殊字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见考察点"><span class="nav-number">1.2.</span> <span class="nav-text">常见考察点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种运算符"><span class="nav-number">2.</span> <span class="nav-text">各种运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符（关系运算符）"><span class="nav-number">2.1.</span> <span class="nav-text">比较运算符（关系运算符）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等式"><span class="nav-number">2.2.</span> <span class="nav-text">等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式"><span class="nav-number">2.3.</span> <span class="nav-text">不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">2.4.</span> <span class="nav-text">赋值运算符 +=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符-amp-amp-、-、"><span class="nav-number">2.5.</span> <span class="nav-text">逻辑运算符 && 、||、!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Truthy-amp-Falsy"><span class="nav-number">2.6.</span> <span class="nav-text">Truthy & Falsy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符—"><span class="nav-number">2.7.</span> <span class="nav-text">三元运算符— ? :</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量、作用域"><span class="nav-number">3.</span> <span class="nav-text">变量、作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

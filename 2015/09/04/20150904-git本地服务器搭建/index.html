@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git本地服务器搭建 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="最近在参加RoboCup，因为考虑到团队代码不能公开，为了方便管理，今天特地学了下git的本地服务器搭建和使用，这个林纳斯开发的用着还是非常好，记录一下。">
+<meta name="keywords" content="Linux,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git本地服务器搭建">
+<meta property="og:url" content="http://binlv.top/2015/09/04/20150904-git本地服务器搭建/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="最近在参加RoboCup，因为考虑到团队代码不能公开，为了方便管理，今天特地学了下git的本地服务器搭建和使用，这个林纳斯开发的用着还是非常好，记录一下。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-21T13:49:12.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git本地服务器搭建">
+<meta name="twitter:description" content="最近在参加RoboCup，因为考虑到团队代码不能公开，为了方便管理，今天特地学了下git的本地服务器搭建和使用，这个林纳斯开发的用着还是非常好，记录一下。">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20150904-git本地服务器搭建" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      git本地服务器搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2015/09/04/20150904-git本地服务器搭建/" class="article-date">
+	  <time datetime="2015-09-04T05:33:33.000Z" itemprop="datePublished">九月 4, 2015</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在参加RoboCup，因为考虑到团队代码不能公开，为了方便管理，今天特地学了下<strong>git</strong>的本地服务器搭建和使用，这个林纳斯开发的用着还是非常好，记录一下。</p>
+<a id="more"></a>
+<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><p>我的客户端和服务器端都是Ubuntu14.04 LTS</p>
+<h1 id="需要工具"><a href="#需要工具" class="headerlink" title="需要工具"></a>需要工具</h1><ul>
+<li>git</li>
+<li>ssh</li>
+</ul>
+<p>这里说明一下，git一般是要自己安装的，Ubuntu使用sudo apt-get install git即可。而ssh一般自带，通过ssh -V(v大写)可以查看，服务器端需安装Server端，sudo apt-get install openssh-server 。<br>检查是否开启ssh：ps -e|grep ssh，如显示sshd则表示服务器开启，修改配置在/etc/ssh/sshd_config中。修改后需重启服务 sudo service ssh restart。</p>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><h2 id="保证客户端主机可以连上服务器端主机"><a href="#保证客户端主机可以连上服务器端主机" class="headerlink" title="保证客户端主机可以连上服务器端主机"></a>保证客户端主机可以连上服务器端主机</h2><p>在客户端机上使用如下命令</p>
+<p><code>ssh &lt;服务器端用户名&gt;@&lt;服务器端IP地址&gt;</code></p>
+<p>确定能登录后ctrl+D注销</p>
+<h2 id="配置服务器端git项目"><a href="#配置服务器端git项目" class="headerlink" title="配置服务器端git项目"></a>配置服务器端git项目</h2><p>在你需要建立git仓库管理的文件下<code>sudo git init --bare sample.git</code>，其中sample.git为你的项目，名字任意，服务器上的Git仓库通常都以.git结尾</p>
+<h2 id="客户端上传本地git项目"><a href="#客户端上传本地git项目" class="headerlink" title="客户端上传本地git项目"></a>客户端上传本地git项目</h2><p>git remote add &lt;取个服务器名字&gt; &lt;服务器用户名&gt;@&lt;服务器IP地址&gt;:&lt;服务器端刚才配置的.git文件夹位置&gt;</p>
+<p>git push &lt;刚才取的服务器名字&gt;</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>一般情况下，一个项目四个人左右在局域网内维护这样就可以了，人多了有权限管理权限，我目前还没涉及。</p>
+<p>不过如果闲每次push都要输入密码麻烦的话，可以使用ssh的公钥即可免密码输入的麻烦，实现如下：</p>
+<p>1.服务器、客户端生成公钥：ssh-keygen，一路回车，默认生成的公钥在/home/&lt;你的用户名&gt;/.ssh/id_rsa.pub,将客户端的这个文件拷到服务器端主机，将其中内容复制到服务器端的公钥里即可。</p>
+<h1 id="参考的学习网站"><a href="#参考的学习网站" class="headerlink" title="参考的学习网站"></a>参考的学习网站</h1><p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="external">廖雪峰的git教程，我一天看完就会了，你说好不好。</a></p>
+<p><a href="http://www.cnblogs.com/trying/archive/2012/06/28/2863758.html" target="_blank" rel="external">这里面介绍了一个项目各个职位的人对git的使用，不错。</a></p>
+<p><a href="http://blog.jobbole.com/60505/" target="_blank" rel="external">如果你遇到权限，可以参考这里。</a></p>
+<p><a href="http://blog.jobbole.com/53573/" target="_blank" rel="external">说15分钟学会使用git服务器搭建，反正我是没十五分钟没会。</a></p>
+<p><a href="http://www.linuxidc.com/Linux/2009-06/20421.htm" target="_blank" rel="external">讲Server的配置比较详细，有ssh_config还有Gitosis的配置。</a></p>
+<p><a href="http://blog.chinaunix.net/uid-16979052-id-3491746.html" target="_blank" rel="external">这有关于修改hosts的，就不用输入IP地址了，也有学习的地方。</a></p>
+<blockquote>
+<p>本文转自我的<a href="http://blog.csdn.net/u014361352/article/details/48212041" target="_blank" rel="external">CSDN博客</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/10/20160210-安装ArchLinux遇到的各种问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          安装ArchLinux遇到的各种问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/26/20150626-关于Excel的几点运用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">关于Excel的几点运用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#运行环境"><span class="nav-number">1.</span> <span class="nav-text">运行环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要工具"><span class="nav-number">2.</span> <span class="nav-text">需要工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装步骤"><span class="nav-number">3.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#保证客户端主机可以连上服务器端主机"><span class="nav-number">3.1.</span> <span class="nav-text">保证客户端主机可以连上服务器端主机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置服务器端git项目"><span class="nav-number">3.2.</span> <span class="nav-text">配置服务器端git项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端上传本地git项目"><span class="nav-number">3.3.</span> <span class="nav-text">客户端上传本地git项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考的学习网站"><span class="nav-number">4.</span> <span class="nav-text">参考的学习网站</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

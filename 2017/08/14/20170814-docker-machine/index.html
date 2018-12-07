@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>docker machine | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="官方参考文档 阿里Docker CE镜像源站  What is Docker Machine ?Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine t">
+<meta name="keywords" content="Docker,docker-machine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker machine">
+<meta property="og:url" content="http://binlv.top/2017/08/14/20170814-docker-machine/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="官方参考文档 阿里Docker CE镜像源站  What is Docker Machine ?Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine t">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-02T05:42:23.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker machine">
+<meta name="twitter:description" content="官方参考文档 阿里Docker CE镜像源站  What is Docker Machine ?Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine t">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20170814-docker-machine" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      docker machine
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/08/14/20170814-docker-machine/" class="article-date">
+	  <time datetime="2017-08-14T04:50:30.000Z" itemprop="datePublished">八月 14, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://docs.docker.com/machine/overview/" target="_blank" rel="external">官方参考文档</a></p>
+<p><a href="https://yq.aliyun.com/articles/110806" target="_blank" rel="external">阿里Docker CE镜像源站</a></p>
+</blockquote>
+<h1 id="What-is-Docker-Machine"><a href="#What-is-Docker-Machine" class="headerlink" title="What is Docker Machine ?"></a>What is Docker Machine ?</h1><p>Docker Machine is <strong>a tool that lets you install Docker Engine on virtual hosts</strong>, and manage the hosts with <code>docker-machine</code> commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like Azure, AWS, or Digital Ocean.</p>
+<p>当在一台宿主机上安装docker，我们需要如下几个步骤（Ubuntu）</p>
+<ol>
+<li>安装 https CA 证书</li>
+<li>添加 GPG key</li>
+<li>添加 docker apt 源</li>
+<li>安装 docker</li>
+</ol>
+<p>但对于多主机环境，每台都如此则显得重复工作且效率低下，因此有了docker-machine—能在多台主机上批量安装配置docker，主机可以是本地虚拟机、物理机、云主机等，支持环境如下：</p>
+<ol>
+<li>常规 Linux 操作系统</li>
+<li>虚拟化平台 - VirtualBox、VMWare、Hyper-V</li>
+<li>OpenStack</li>
+<li>公有云 - Amazon Web Services、Microsoft Azure、Google Compute Engine、Digital Ocean 等</li>
+</ol>
+<p>在docker machine中，都称之为Provider，不同Provider对应不同driver来安装配置docker host。</p>
+<a id="more"></a>
+<h1 id="Install-Docker-Machine"><a href="#Install-Docker-Machine" class="headerlink" title="Install Docker Machine"></a>Install Docker Machine</h1><ol>
+<li><p>Install Docker </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</div></pre></td></tr></table></figure>
+<p>If you would like to use Docker as a non-root user, you should now consider<br>adding your user to the “docker” group with something like:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo usermod -aG docker &lt;your username&gt;</div></pre></td></tr></table></figure>
+<p><strong><a href="https://yq.aliyun.com/articles/29941?spm=5176.100239.blogcont110806.19.d0XnVG" target="_blank" rel="external">配置镜像加速器</a></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo mkdir -p /etc/docker</div><div class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"填入你的阿里云专属加速器地址"</span>]</div><div class="line">&#125;</div><div class="line">EOF</div><div class="line">sudo systemctl daemon-reload</div><div class="line">sudo systemctl restart docker</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Download the Docker Machine binary and extract it to your PATH.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://github.com/docker/machine/releases/download/v0.12.2/docker-machine-`uname -s`-`uname -m` &gt;/tmp/docker-machine &amp;&amp;</div><div class="line">chmod +x /tmp/docker-machine &amp;&amp;</div><div class="line">sudo cp /tmp/docker-machine /usr/<span class="built_in">local</span>/bin/docker-machine</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Check the installation by displaying the Machine version:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker-machine version</div><div class="line">docker-machine version 0.12.2, build 9371605</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Installing bash completion scripts</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scripts=( docker-machine-prompt.bash docker-machine-wrapper.bash docker-machine.bash ); <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;scripts[@]&#125;</span>"</span>; <span class="keyword">do</span> sudo wget https://raw.githubusercontent.com/docker/machine/v0.12.2/contrib/completion/bash/<span class="variable">$&#123;i&#125;</span> -P /etc/bash_completion.d; <span class="keyword">done</span></div></pre></td></tr></table></figure>
+<p>To enable the <code>docker-machine</code> shell prompt, add <code>$(__docker_machine_ps1)</code> to your <code>PS1</code>setting in <code>~/.bashrc</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PS1=<span class="string">'[\u@\h \W$(__docker_machine_ps1)]\$ '</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Use-Machine-to-run-Docker-containers"><a href="#Use-Machine-to-run-Docker-containers" class="headerlink" title="Use Machine to run Docker containers"></a>Use Machine to run Docker containers</h1><p>To run a Docker container,you:</p>
+<ul>
+<li>create a new(or start an exiting) Docker virtual machine</li>
+<li>switch your environment to your new VM</li>
+<li>use the docker client to create,load and manage containers</li>
+</ul>
+<h2 id="Machine-drivers—Generic"><a href="#Machine-drivers—Generic" class="headerlink" title="Machine drivers—Generic"></a>Machine drivers—Generic</h2><p>Create machines using an existing VM/Host with SSH.</p>
+<p>This is useful if you are using a provider that Machine does not support directly or if you would like to import an existing host to allow Docker Machine to manage.</p>
+<p>The driver will perform a list of tasks on create:</p>
+<ul>
+<li>If docker is not running on the host, it will be installed automatically.</li>
+<li>It will update the host packages (<code>apt-get update</code>, <code>yum update</code>…).</li>
+<li>It will generate certificates to secure the docker daemon.</li>
+<li>The docker daemon will be restarted, thus all running containers will be stopped.</li>
+<li>The hostname will be changed to fit the machine name.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-machine create --driver generic --generic-ip-address=192.168.56.104 host1</div></pre></td></tr></table></figure>
+<h3 id="Sudo-privileges"><a href="#Sudo-privileges" class="headerlink" title="Sudo privileges"></a>Sudo privileges</h3><p>The user that is used to SSH into the host can be specified with <code>--generic-ssh-user</code> flag. This user has to have password-less sudo privileges. If it’s not the case, you need to edit the <code>sudoers</code>file and configure the user as a sudoer with <code>NOPASSWD</code>. See <a href="https://help.ubuntu.com/community/Sudoers" target="_blank" rel="external">https://help.ubuntu.com/community/Sudoers</a> .</p>
+<h4 id="ENVIRONMENT-VARIABLES-AND-DEFAULT-VALUES"><a href="#ENVIRONMENT-VARIABLES-AND-DEFAULT-VALUES" class="headerlink" title="ENVIRONMENT VARIABLES AND DEFAULT VALUES"></a>ENVIRONMENT VARIABLES AND DEFAULT VALUES</h4><table>
+<thead>
+<tr>
+<th>CLI option</th>
+<th>Environment variable</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--generic-engine-port</code></td>
+<td><code>GENERIC_ENGINE_PORT</code></td>
+<td><code>2376</code></td>
+</tr>
+<tr>
+<td><strong>–generic-ip-address</strong></td>
+<td><code>GENERIC_IP_ADDRESS</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>--generic-ssh-key</code></td>
+<td><code>GENERIC_SSH_KEY</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>--generic-ssh-user</code></td>
+<td><code>GENERIC_SSH_USER</code></td>
+<td><code>root</code></td>
+</tr>
+<tr>
+<td><code>--generic-ssh-port</code></td>
+<td><code>GENERIC_SSH_PORT</code></td>
+<td><code>22</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create-过程："><a href="#create-过程：" class="headerlink" title="create 过程："></a>create 过程：</h2><p>① 通过 ssh 登录到远程主机。<br>② 安装 docker。<br>③ 拷贝证书。<br>④ 配置 docker daemon。<br>⑤ 启动 docker。</p>
+<h1 id="Machine-CLI"><a href="#Machine-CLI" class="headerlink" title="Machine CLI"></a>Machine CLI</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Options:</div><div class="line"></div><div class="line">  --debug, -D						Enable debug mode</div><div class="line"></div><div class="line">  --storage-path, -s "/home/binlv/.docker/machine"	Configures storage path [$MACHINE_STORAGE_PATH]</div><div class="line"></div><div class="line">  --tls-ca-cert 					CA to verify remotes against [$MACHINE_TLS_CA_CERT]</div><div class="line"></div><div class="line">  --tls-ca-key 						Private key to generate certificates [$MACHINE_TLS_CA_KEY]</div><div class="line"></div><div class="line">  --tls-client-cert 					Client cert to use for TLS [$MACHINE_TLS_CLIENT_CERT]</div><div class="line"></div><div class="line">  --tls-client-key 					Private key used in client TLS auth [$MACHINE_TLS_CLIENT_KEY]</div><div class="line"></div><div class="line">  --github-api-token 					Token to use for requests to the Github API [$MACHINE_GITHUB_API_TOKEN]</div><div class="line"></div><div class="line">  --native-ssh						Use the native (Go-based) SSH implementation. [$MACHINE_NATIVE_SSH]</div><div class="line"></div><div class="line">  --bugsnag-api-token 					BugSnag API token for crash reporting [$MACHINE_BUGSNAG_API_TOKEN]</div><div class="line"></div><div class="line">  --help, -h						show help</div><div class="line"></div><div class="line">  --version, -v						print the version</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">Commands:</div><div class="line"></div><div class="line">  active				Print which machine is active</div><div class="line"></div><div class="line">  config				Print the connection config for machine</div><div class="line"></div><div class="line">  create				Create a machine</div><div class="line"></div><div class="line">  env				Display the commands to set up the environment for the Docker client</div><div class="line"></div><div class="line">  inspect				Inspect information about a machine</div><div class="line"></div><div class="line">  ip					Get the IP address of a machine</div><div class="line"></div><div class="line">  kill					Kill a machine</div><div class="line"></div><div class="line">  ls					List machines</div><div class="line"></div><div class="line">  provision			Re-provision existing machines</div><div class="line"></div><div class="line">  regenerate-certs	Regenerate TLS Certificates for a machine</div><div class="line"></div><div class="line">  restart				Restart a machine</div><div class="line"></div><div class="line">  rm					Remove a machine</div><div class="line"></div><div class="line">  ssh				Log into or run a command on a machine with SSH.</div><div class="line"></div><div class="line">  scp				Copy files between machines</div><div class="line"></div><div class="line">  start				Start a machine</div><div class="line"></div><div class="line">  status				Get the status of a machine</div><div class="line"></div><div class="line">  stop				Stop a machine</div><div class="line"></div><div class="line">  upgrade			Upgrade a machine to the latest version of Docker</div><div class="line"></div><div class="line">  url					Get the URL of a machine</div><div class="line"></div><div class="line">  version				Show the Docker Machine version or a machine docker version</div><div class="line"></div><div class="line">  help				Shows a list of commands or help for one command</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-machine/">docker-machine</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/01/20170901-ansible初步/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          ansible初步
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/05/20170805-docker网络管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">docker单主机网络管理实践</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-Docker-Machine"><span class="nav-number">1.</span> <span class="nav-text">What is Docker Machine ?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-Docker-Machine"><span class="nav-number">2.</span> <span class="nav-text">Install Docker Machine</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-Machine-to-run-Docker-containers"><span class="nav-number">3.</span> <span class="nav-text">Use Machine to run Docker containers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-drivers—Generic"><span class="nav-number">3.1.</span> <span class="nav-text">Machine drivers—Generic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sudo-privileges"><span class="nav-number">3.1.1.</span> <span class="nav-text">Sudo privileges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ENVIRONMENT-VARIABLES-AND-DEFAULT-VALUES"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">ENVIRONMENT VARIABLES AND DEFAULT VALUES</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-过程："><span class="nav-number">3.2.</span> <span class="nav-text">create 过程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Machine-CLI"><span class="nav-number">4.</span> <span class="nav-text">Machine CLI</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

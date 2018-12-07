@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>安装archlinux遇到的各种问题 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="废话一下不知为何，踏入计算机领域以来最兴奋的就是装系统了==。传说会装ArchLinux的才是真的会装系统，怀着好奇心开始了Arch的安装。。。不得不说确实麻烦点，但好在有那么多具有奉献精神的程序员们，Arch拥有丰富的wiki指南，遇到问题去wiki看看一般都有答案了。这里我仅记录下自己在安装过程遇到的问题和我的解决办法，防止忘记，OK">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装ArchLinux遇到的各种问题">
+<meta property="og:url" content="http://binlv.top/2016/02/10/20160210-安装ArchLinux遇到的各种问题/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="废话一下不知为何，踏入计算机领域以来最兴奋的就是装系统了==。传说会装ArchLinux的才是真的会装系统，怀着好奇心开始了Arch的安装。。。不得不说确实麻烦点，但好在有那么多具有奉献精神的程序员们，Arch拥有丰富的wiki指南，遇到问题去wiki看看一般都有答案了。这里我仅记录下自己在安装过程遇到的问题和我的解决办法，防止忘记，OK">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/ArchLinuxproblems1.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10">
+<meta property="og:image" content="http://img.blog.csdn.net/20170309143059043?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDM2MTM1Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-09T04:28:55.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安装ArchLinux遇到的各种问题">
+<meta name="twitter:description" content="废话一下不知为何，踏入计算机领域以来最兴奋的就是装系统了==。传说会装ArchLinux的才是真的会装系统，怀着好奇心开始了Arch的安装。。。不得不说确实麻烦点，但好在有那么多具有奉献精神的程序员们，Arch拥有丰富的wiki指南，遇到问题去wiki看看一般都有答案了。这里我仅记录下自己在安装过程遇到的问题和我的解决办法，防止忘记，OK">
+<meta name="twitter:image" content="http://olvboulzy.bkt.clouddn.com/ArchLinuxproblems1.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20160210-安装ArchLinux遇到的各种问题" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      安装ArchLinux遇到的各种问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2016/02/10/20160210-安装ArchLinux遇到的各种问题/" class="article-date">
+	  <time datetime="2016-02-10T12:10:33.000Z" itemprop="datePublished">二月 10, 2016</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://olvboulzy.bkt.clouddn.com/ArchLinuxproblems1.png?imageView2/0/q/75|watermark/2/text/aHR0cDovL2Jpbmx2LnRvcA==/font/YXJpYWw=/fontsize/260/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dx/10/dy/10" alt=""></p>
+<h2 id="废话一下"><a href="#废话一下" class="headerlink" title="废话一下"></a>废话一下</h2><p>不知为何，踏入计算机领域以来最兴奋的就是装系统了==。传说会装ArchLinux的才是真的会装系统，怀着好奇心开始了Arch的安装。。。不得不说确实麻烦点，但好在有那么多具有奉献精神的程序员们，Arch拥有丰富的wiki指南，遇到问题去wiki看看一般都有答案了。这里我仅记录下自己在安装过程遇到的问题和我的解决办法，防止忘记，OK</p>
+<a id="more"></a>
+<h2 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h2><ul>
+<li><a href="http://bbs.archlinuxcn.org/viewtopic.php?id=1037" target="_blank" rel="external">中文wiki</a></li>
+</ul>
+<h3 id="用U盘刻录后开机无法进入安装"><a href="#用U盘刻录后开机无法进入安装" class="headerlink" title="用U盘刻录后开机无法进入安装"></a>用U盘刻录后开机无法进入安装</h3><p>官方下载的镜像肯定没问题，我曾尝试用原来刻windows用的软碟通，刻录是完成了可就是进不去U盘，引导文件也有，无语</p>
+<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>使用USBWrite再次写入即可安装。忘记对比和软碟通做的有什么区别，哪位如果尝试的话希望留言</p>
+<h3 id="引导GRUB双系统无法完成"><a href="#引导GRUB双系统无法完成" class="headerlink" title="引导GRUB双系统无法完成"></a>引导GRUB双系统无法完成</h3><p>UEFI模式下 Linux会在ESP（启动分区）加入vmlinuz等，是Linux启动的微内核…，开始我以为这东西没用，就全删了，结果蛋疼折腾一晚上。。。。<br>每次在grub-install写入grub.cfg时报错<br>情况1：”Failed to connect to lvmetad: No such file or directory.  Falling back to internal scanning. “</p>
+<h4 id="解决办法：-1"><a href="#解决办法：-1" class="headerlink" title="解决办法："></a>解决办法：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Pacman -S device-mapper linux lvm2</div></pre></td></tr></table></figure>
+<p>重新安装相关启动内核，参考<a href="https://bbs.archlinux.org/viewtopic.php?id=159415" target="_blank" rel="external">wiki</a></p>
+<h3 id="写grub-cfg"><a href="#写grub-cfg" class="headerlink" title="写grub.cfg"></a>写grub.cfg</h3><p>参考<a href="https://wiki.archlinux.org/index.php/GRUB_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29#.E5.85.B6.E4.BB.96.E7.B3.BB.E7.BB.9F.E4.B8.8D.E8.83.BD.E8.87.AA.E5.8A.A8.E.8F.91.E7.8E.B0Arch_Linux" target="_blank" rel="external">wiki</a><br>这个折腾了我比较久，因为我是Win8.1和Arch双系统，Arch最大特点就是可定制化，说白了就是基本都要自己干，以前装Ubuntu的时候，双系统可以自动引导，Arch就。。。恩，要有耐心<br>手动创建过程如下：（如果grub-install一直报错建议手动添加，还能增加理解）<br>基本的GRUB配置文件使用如下选项:<br>(hdX,Y) 是X磁盘的Y分区,分区从1开始计数,磁盘从0开始计数.<br>set default=N设定用户选择超时时间过后的默认启动项<br>set timeout=M设定用户选择超时时间(秒).<br>menuentry “title” {entry options}设置一个名为title的启动项<br>set root=(hdX,Y)设定启动分区(kernel和GRUB模组所在磁盘),/boot没被要求独占一个分区,有可能就是root分区下的一个文件夹<br>示例配置如下:</p>
+<p>/boot/grub/grub.cfg</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Config file for GRUB - The GNU GRand Unified Bootloader&#10;# /boot/grub/grub.cfg&#10;&#10;# DEVICE NAME CONVERSIONS&#10;#&#10;#  Linux           Grub&#10;# ————————-&#10;#  /dev/fd0        (fd0)&#10;#  /dev/sda        (hd0)&#10;#  /dev/sdb2       (hd1,2)&#10;#  /dev/sda3       (hd0,3)&#10;#&#10;&#10;# Timeout for menu&#10;set timeout=5&#10;&#10;# Set default boot entry as Entry 0&#10;set default=0&#10;&#10;# (0) Arch Linux&#10;menuentry &#34;Arch Linux&#34; &#123;&#10;  set root=(hd0,1)&#10;  linux /vmlinuz-linux root=/dev/sda3 ro&#10;  initrd /initramfs-linux.img&#10;&#125;&#10;&#10;## (1) Windows&#10;#menuentry &#34;Windows&#34; &#123;&#10;#  set root=(hd0,3)&#10;#  chainloader +1&#10;#&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="解决字体问题"><a href="#解决字体问题" class="headerlink" title="解决字体问题"></a>解决字体问题</h3><p>网页中文字体模糊 安装什么泉字体即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yaourt -S</div></pre></td></tr></table></figure></p>
+<p>WPS缺少字体symbol等，下载Ubuntu的字体包.deb，然后解压出来找到字体文件cp -r到/usr/share/fonts/下即可</p>
+<h3 id="主题问题"><a href="#主题问题" class="headerlink" title="主题问题"></a>主题问题</h3><p>gonme的主题可以去gonme-look.org下载，然后cp -r 到 /usr/share/themes/下然后快捷键 alt+F2输入r再回车即可通过gonme-tools更换</p>
+<h3 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h3><p>发现软件管理器的一个安装脚本PK。。。老是报错，也是醉了</p>
+<h3 id="gonme-shell-extension"><a href="#gonme-shell-extension" class="headerlink" title="gonme shell extension"></a>gonme shell extension</h3><p>插件用火狐浏览器可以直接装，两个字 方便！！</p>
+<h3 id="联网问题"><a href="#联网问题" class="headerlink" title="联网问题"></a>联网问题</h3><p>设置Networkmanager时需注意它和wifi-menu之间配置会冲突，容易引起开机时wifi无法连接问题，只能取其一将其中一个开机启动禁用即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">disable</span> xxx.service...</div></pre></td></tr></table></figure></p>
+<h3 id="字体显示问题"><a href="#字体显示问题" class="headerlink" title="字体显示问题"></a>字体显示问题</h3><p>好像是我更新的时候挂了，就像这样<img src="http://img.blog.csdn.net/20170309143059043?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxNDM2MTM1Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h4 id="解决办法：-2"><a href="#解决办法：-2" class="headerlink" title="解决办法："></a>解决办法：</h4><p>一般字体出问题无法显示都可以用这个方法—-恢复到未打补丁的包<br>To restore the unpatched packages, reinstall the originals:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pacman -S --asdeps freetype2 libxft cairo fontconfig</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/11/20160311-Android入门开发(一)-Java基础语法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Android入门开发(一)---Java基础语法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/04/20150904-git本地服务器搭建/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">git本地服务器搭建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#废话一下"><span class="nav-number">1.</span> <span class="nav-text">废话一下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档："><span class="nav-number">2.</span> <span class="nav-text">参考文档：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用U盘刻录后开机无法进入安装"><span class="nav-number">2.1.</span> <span class="nav-text">用U盘刻录后开机无法进入安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法："><span class="nav-number">2.1.1.</span> <span class="nav-text">解决办法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引导GRUB双系统无法完成"><span class="nav-number">2.2.</span> <span class="nav-text">引导GRUB双系统无法完成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法：-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">解决办法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写grub-cfg"><span class="nav-number">2.3.</span> <span class="nav-text">写grub.cfg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决字体问题"><span class="nav-number">2.4.</span> <span class="nav-text">解决字体问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题问题"><span class="nav-number">2.5.</span> <span class="nav-text">主题问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装软件"><span class="nav-number">2.6.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gonme-shell-extension"><span class="nav-number">2.7.</span> <span class="nav-text">gonme shell extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联网问题"><span class="nav-number">2.8.</span> <span class="nav-text">联网问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体显示问题"><span class="nav-number">2.9.</span> <span class="nav-text">字体显示问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法：-2"><span class="nav-number">2.9.1.</span> <span class="nav-text">解决办法：</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

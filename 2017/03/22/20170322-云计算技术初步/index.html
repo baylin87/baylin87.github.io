@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>云计算技术初步 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="前言云计算说白了就是将硬件资源整合再在软件层面重新进行分配，一般是三大资源—计算资源、网络资源、存储资源。">
+<meta name="keywords" content="云计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算技术初步">
+<meta property="og:url" content="http://binlv.top/2017/03/22/20170322-云计算技术初步/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="前言云计算说白了就是将硬件资源整合再在软件层面重新进行分配，一般是三大资源—计算资源、网络资源、存储资源。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-01T06:29:20.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算技术初步">
+<meta name="twitter:description" content="前言云计算说白了就是将硬件资源整合再在软件层面重新进行分配，一般是三大资源—计算资源、网络资源、存储资源。">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20170322-云计算技术初步" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      云计算技术初步
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/22/20170322-云计算技术初步/" class="article-date">
+	  <time datetime="2017-03-22T03:17:23.000Z" itemprop="datePublished">三月 22, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>云计算说白了就是将硬件资源整合再在软件层面重新进行分配，一般是三大资源—计算资源、网络资源、存储资源。<br><a id="more"></a></p>
+<h2 id="三种角色"><a href="#三种角色" class="headerlink" title="三种角色"></a>三种角色</h2><ul>
+<li>资源整合运营者</li>
+<li>资源使用者</li>
+<li>终端客户<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2></li>
+<li>资源池弹性可扩张</li>
+<li>按需提供资源服务</li>
+<li>虚拟化</li>
+<li>网络化资源接入</li>
+<li>高可靠和安全性<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="按资源封装层次分"><a href="#按资源封装层次分" class="headerlink" title="按资源封装层次分"></a>按资源封装层次分</h3></li>
+<li>基础设施即服务（Infrastructure as a Service，IaaS）<br> 如：Amazon EC2、IBM Blue Cloud、Sun Grid<br>   主要是虚拟化技术</li>
+<li>平台即服务（Platform as a Service，PaaS）<br> 如：IBM IT Factory、Google APPEngine、Force.com    </li>
+<li>软件即服务（Software as a Service，SaaS）<br> 如：Google APPS、SoftWare+Services</li>
+</ul>
+<h4 id="四层模型："><a href="#四层模型：" class="headerlink" title="四层模型："></a>四层模型：</h4><p>   应  用  层 — SaaS<br>   平  台  层 — PaaS<br>  基础设施层 — IaaS<br>   虚拟化层 — 硬件即服务</p>
+<h3 id="按技术路线分："><a href="#按技术路线分：" class="headerlink" title="按技术路线分："></a>按技术路线分：</h3><ul>
+<li>资源整合技术<br> 大都集群架构，将分散的计算和存储资源整合输出<br> 核心：分布式计算、存储<br> 应用：MPI(并行计算技术)、Hadoop(Apache的分布式计算系统)、HPCC(高性能计算集群)、Storm(基于拓扑的的流数据实时计算平台)</li>
+<li>资源切分技术<br> 虚拟化系统，对单个服务器资源的弹性切分，从而有效利用服务器资源<br> 主要：桌面云<br> 应用：KVM、VMware<h2 id="云计算技术主要内容"><a href="#云计算技术主要内容" class="headerlink" title="云计算技术主要内容"></a>云计算技术主要内容</h2></li>
+<li>分布式计算技术</li>
+<li>虚拟化技术</li>
+<li>网络技术</li>
+<li>服务器技术</li>
+<li>数据中心技术</li>
+<li>云计算平台技术</li>
+<li><p>存储技术</p>
+<h3 id="虚拟化技术"><a href="#虚拟化技术" class="headerlink" title="虚拟化技术"></a>虚拟化技术</h3><p>现代计算机系统分为几个层次（自下而上）：</p>
+<p>裸机（底层硬件）– 操作系统 — 操作系统提供应用程序编程接口 — 运行在操作系统上各种应用程序</p>
+<p>虚拟化就是要在不同层次间建立虚拟化层，向上提供与真实层次相同或相近功能<br>要明确 对象、过程、结果</p>
+</li>
+</ul>
+<h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>指令集架构级虚拟化<br> Bochs、VLIW</li>
+<li>硬件抽象层虚拟化<br> VMWare、Virtual PC、Xen、KVM</li>
+<li>操作系统层虚拟化<br> Virtual Sever、Zone、Virtuozzo</li>
+<li>编程语言层虚拟化<br> JVM、CLR</li>
+<li>库函数虚拟化<br> Wine<h3 id="系统虚拟化"><a href="#系统虚拟化" class="headerlink" title="系统虚拟化"></a>系统虚拟化</h3>就是在一台计算机系统上虚拟多台计算机系统<h4 id="服务器虚拟化"><a href="#服务器虚拟化" class="headerlink" title="服务器虚拟化"></a>服务器虚拟化</h4>将系统虚拟化应用到服务器上<br>所需技术：CPU、内存、IO虚拟化<h4 id="桌面虚拟化"><a href="#桌面虚拟化" class="headerlink" title="桌面虚拟化"></a>桌面虚拟化</h4>使桌面与其使用的终端设备相分离<br>主要技术：VDI、SBC<h4 id="网络虚拟化"><a href="#网络虚拟化" class="headerlink" title="网络虚拟化"></a>网络虚拟化</h4>虚拟专用网、虚拟局域网<h3 id="集群系统"><a href="#集群系统" class="headerlink" title="集群系统"></a>集群系统</h3>就是一组独立的计算机（节点）的集合体，除了作为单一计算资源供用户使用外还可以协同工作，供并行任务使用</li>
+<li>并行计算集群Beowulf</li>
+<li>集群文件系统HDFS、GFS、Lustre<h1 id="数据中心能耗"><a href="#数据中心能耗" class="headerlink" title="数据中心能耗"></a>数据中心能耗</h1>数据中心是管理和维护的中心，能耗是衡量一个数据中心管理维护是否合理的重要的标准。常用的有PUE、DCIE、能耗比等。<h2 id="PUE"><a href="#PUE" class="headerlink" title="PUE"></a>PUE</h2>Power Usage Effectiveness<br>PUE = 数据中心整体能耗/IT设备能耗<br>最理想的值是1，Google全年平均1.12，百度M1云计算中心1.35<br>例如：<br>  数据中心A有100个机柜，每个机柜5台2U/18刀的刀片服务器，运行总功率500kW，IT设备功率250kW，则该数据中心PUE=500/250=2；<br>  数据中心B有200个机柜，每个机柜有6台机架式2U/4刀的机架式服务器，运行功率700kW，IT设备功率300kW，该数据中心PUE=700/300=2.33；<br>  总结：A好。<h2 id="DCIE"><a href="#DCIE" class="headerlink" title="DCIE"></a>DCIE</h2>Data Center Infrastructure Effectiveness<br>DCIE = IT设备能耗/数据中心整体能耗/IT设备能耗<br>其实就是PUE倒数<h2 id="能耗比"><a href="#能耗比" class="headerlink" title="能耗比"></a>能耗比</h2>IT设备能耗比 = IT设备每秒数据处理流量/IT设备能耗</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/云计算/">云计算</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/23/20170323-vSphere入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          vSphere入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/28/20170228-关于目标具象化/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">关于目标具象化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种角色"><span class="nav-number">1.1.</span> <span class="nav-text">三种角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.3.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按资源封装层次分"><span class="nav-number">1.3.1.</span> <span class="nav-text">按资源封装层次分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四层模型："><span class="nav-number">1.3.1.1.</span> <span class="nav-text">四层模型：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按技术路线分："><span class="nav-number">1.3.2.</span> <span class="nav-text">按技术路线分：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云计算技术主要内容"><span class="nav-number">1.4.</span> <span class="nav-text">云计算技术主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟化技术"><span class="nav-number">1.4.1.</span> <span class="nav-text">虚拟化技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类-1"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统虚拟化"><span class="nav-number">1.4.2.</span> <span class="nav-text">系统虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器虚拟化"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">服务器虚拟化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#桌面虚拟化"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">桌面虚拟化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络虚拟化"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">网络虚拟化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群系统"><span class="nav-number">1.4.3.</span> <span class="nav-text">集群系统</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据中心能耗"><span class="nav-number">2.</span> <span class="nav-text">数据中心能耗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PUE"><span class="nav-number">2.1.</span> <span class="nav-text">PUE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DCIE"><span class="nav-number">2.2.</span> <span class="nav-text">DCIE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#能耗比"><span class="nav-number">2.3.</span> <span class="nav-text">能耗比</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

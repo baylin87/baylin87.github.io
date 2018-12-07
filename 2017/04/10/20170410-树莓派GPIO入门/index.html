@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>树莓派gipo入门(一)：led灯 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv" />
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R" />
+  
+  
+  <meta name="description" content="所需硬件 树莓派3代B型（40 GIPO引脚） 杜邦线（公对母） 面包板 发光二极管(LED小灯)  预备知识">
+<meta name="keywords" content="树莓派,GIPO,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派GIPO入门(一)：LED灯">
+<meta property="og:url" content="http://binlv.top/2017/04/10/20170410-树莓派GPIO入门/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="所需硬件 树莓派3代B型（40 GIPO引脚） 杜邦线（公对母） 面包板 发光二极管(LED小灯)  预备知识">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4377539-4d20cd9d7c61da6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://cdn.sparkfun.com/r/600-600/assets/3/d/f/a/9/518c0b34ce395fea62000002.jpg">
+<meta property="og:updated_time" content="2017-09-09T04:28:55.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派GIPO入门(一)：LED灯">
+<meta name="twitter:description" content="所需硬件 树莓派3代B型（40 GIPO引脚） 杜邦线（公对母） 面包板 发光二极管(LED小灯)  预备知识">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4377539-4d20cd9d7c61da6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20170410-树莓派GPIO入门" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      树莓派GIPO入门(一)：LED灯
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/10/20170410-树莓派GPIO入门/" class="article-date">
+	  <time datetime="2017-04-10T12:25:23.000Z" itemprop="datePublished">四月 10, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="所需硬件"><a href="#所需硬件" class="headerlink" title="所需硬件"></a>所需硬件</h1><ul>
+<li>树莓派3代B型（40 GIPO引脚）</li>
+<li>杜邦线（公对母）</li>
+<li>面包板</li>
+<li>发光二极管(LED小灯)</li>
+</ul>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><a id="more"></a>
+<h2 id="什么是GIPO"><a href="#什么是GIPO" class="headerlink" title="什么是GIPO"></a>什么是GIPO</h2><p>GPIO是General Purpose Input Output （通用输入/输出）的缩写，一般译为总线扩展器，人们利用工业标准I2C、SMBus或SPI接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。<br>目前你只需要知道GIPO可以提供电流让你的元器件通电。它的各引脚信息如下：<br><img src="http://upload-images.jianshu.io/upload_images/4377539-4d20cd9d7c61da6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GIPO编号图"></p>
+<h2 id="面包板"><a href="#面包板" class="headerlink" title="面包板"></a>面包板</h2><p>一排为相连<br><a href="http://www.i-element.org/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E9%9D%A2%E5%8C%85%E6%9D%BF/" target="_blank" rel="external">如何使用面包板</a><br><a href="http://www.guokr.com/post/718305/" target="_blank" rel="external">果壳网-如何使用面包板</a><br><img src="https://cdn.sparkfun.com/r/600-600/assets/3/d/f/a/9/518c0b34ce395fea62000002.jpg" alt="面包板内部图"></p>
+<h2 id="发光二极管"><a href="#发光二极管" class="headerlink" title="发光二极管"></a>发光二极管</h2><p>长的一脚为正极，短的一脚为负极</p>
+<p>呼吸灯代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># encoding: utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> RPi.GPIO</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">RPi.GPIO.setmode(RPi.GPIO.BCM)</div><div class="line">RPi.GPIO.setup(<span class="number">14</span>, RPi.GPIO.OUT)</div><div class="line"></div><div class="line"><span class="comment"># 创建一个 PWM 实例，需要两个参数，第一个是GPIO端口号，这里我们用14号</span></div><div class="line"><span class="comment"># 第二个是频率（Hz），频率越高LED看上去越不会闪烁，相应对CPU要求就越高，设置合适的值就可以</span></div><div class="line">pwm = RPi.GPIO.PWM(<span class="number">14</span>, <span class="number">70</span>)</div><div class="line"></div><div class="line"><span class="comment"># 启用 PWM，参数是占空比（可以理解为电流大小），范围：0.0 &lt;= 占空比 &gt;= 100.0</span></div><div class="line">pwm.start(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">		<span class="comment"># 电流从小到大，LED由暗到亮</span></div><div class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, <span class="number">101</span>, <span class="number">1</span>):</div><div class="line">			<span class="comment"># 更改占空比（电流大小），</span></div><div class="line">			pwm.ChangeDutyCycle(i)</div><div class="line">			time.sleep(<span class="number">.02</span>)</div><div class="line">			</div><div class="line">		<span class="comment"># 再让电流从大到小，LED由亮变暗</span></div><div class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">100</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">			pwm.ChangeDutyCycle(i)</div><div class="line">			time.sleep(<span class="number">.02</span>)</div><div class="line"></div><div class="line"><span class="comment"># 最后一段是一个小技巧。这个程序如果不强制停止会不停地执行下去。</span></div><div class="line"><span class="comment"># 而Ctrl+C强制终端程序的话，GPIO口又没有机会清理。</span></div><div class="line"><span class="comment"># 加上一个try except 可以捕捉到Ctrl+C强制中断的动作，</span></div><div class="line"><span class="comment"># 试图强制中断时，程序不会马上停止而是会先跳到这里来做一些你想做完的事情，比如清理GPIO口。</span></div><div class="line"><span class="keyword">except</span> KeyboardInterrupt:</div><div class="line">	<span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="comment"># 停用 PWM</span></div><div class="line">pwm.stop()</div><div class="line"></div><div class="line"><span class="comment"># 清理GPIO口</span></div><div class="line">RPi.GPIO.cleanup()</div></pre></td></tr></table></figure>
+<p>#</p>
+<h2 id="脉宽调制（PWM）"><a href="#脉宽调制（PWM）" class="headerlink" title="脉宽调制（PWM）"></a>脉宽调制（PWM）</h2><p>简单的说，PWM技术就是不停的通断电路并控制通断持续的时间片段长度来控制用电器在单位时间内实际得到的电能。<br>这么说好像还是复杂了，再简单点说，如果你的手足够快，打开电灯开关后马上关闭，如果这个时间间隔足够短，灯丝还没有全部亮起来就暗下去了。你再次打开电灯再关闭，再打开再关闭。。。如果你一直保持相同的频率，那么电灯应该会保持一个固定的亮度不变。理论上，你可以通过调整开灯持续的时间长度和关灯持续的时间长度的比例就能得到不同亮度了。这个比例被称为“占空比”。</p>
+<p>跑马灯效果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</div><div class="line"><span class="keyword">import</span> time</div><div class="line"> </div><div class="line">GPIO.setmode(GPIO.BOARD)</div><div class="line"> </div><div class="line">channels = [<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>,<span class="number">15</span>] </div><div class="line">p = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">4</span>)]</div><div class="line"> </div><div class="line"><span class="keyword">for</span> ch <span class="keyword">in</span> channels:</div><div class="line">  GPIO.setup(ch, GPIO.OUT)</div><div class="line"> </div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">  p[i] = GPIO.PWM(channels[i], <span class="number">50</span>) <span class="comment">#频率设为50Hz</span></div><div class="line">  p[i].start(<span class="number">0</span>) <span class="comment">#0是占空比</span></div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">  <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">      <span class="keyword">for</span> dc <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">101</span>, <span class="number">1</span>):</div><div class="line">        p[ch].ChangeDutyCycle(dc) <span class="comment">#更改占空比</span></div><div class="line">        time.sleep(<span class="number">0.005</span>)</div><div class="line">      <span class="keyword">for</span> dc <span class="keyword">in</span> range(<span class="number">100</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">        p[ch].ChangeDutyCycle(dc)</div><div class="line">        time.sleep(<span class="number">0.005</span>)</div><div class="line">  <span class="keyword">except</span> KeyboardInterrupt:</div><div class="line">    gpio.cleanup()</div><div class="line">    <span class="keyword">print</span> <span class="string">"All Cleanup!"</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIPO/">GIPO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/02/20170502-关于职业规划与自我认知/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          职业规划与自我认知
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/08/20170408-等级保护和分级保护/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">等级保护和分级保护</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#所需硬件"><span class="nav-number">1.</span> <span class="nav-text">所需硬件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">2.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是GIPO"><span class="nav-number">2.1.</span> <span class="nav-text">什么是GIPO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面包板"><span class="nav-number">2.2.</span> <span class="nav-text">面包板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发光二极管"><span class="nav-number">2.3.</span> <span class="nav-text">发光二极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脉宽调制（PWM）"><span class="nav-number">2.4.</span> <span class="nav-text">脉宽调制（PWM）</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
