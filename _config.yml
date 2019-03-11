@@ -80,6 +80,12 @@ theme: hiero
 plugin:
 - hexo-generator-feed
 
+#Search
+search:
+  path: search.xml
+  field: post
+  content: true
+
 #Feed Atom
 feed:
   type: atom
