@@ -2,6 +2,7 @@
 title: RN Keyboard dismiss
 tags:
   - JavaScript
+  - React Native
 comments: true
 date: 2019-04-27 12:10:45
 categories: 编程开发
