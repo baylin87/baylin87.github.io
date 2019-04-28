@@ -35,3 +35,7 @@ or
 手动调用 `keyboard.dismiss()`
 
 ## other
+
+# ref
+
+- [github-issue-Keyboard won't dismiss when area outside of keyboard is tapped](https://github.com/FaridSafi/react-native-gifted-chat/issues/405)
