@@ -95,9 +95,6 @@ feed:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy: 
-#  - type: git
-#    repository: root@159.65.96.101:/var/www/blog.git
-#    branch: master
   - type: git
     repository: git@github.com:baylin87/baylin87.github.io.git
     branch: master
