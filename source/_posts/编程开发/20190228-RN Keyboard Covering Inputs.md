@@ -14,6 +14,8 @@ categories: 编程开发
 3. 用`transform`向Y轴平移啊，还不用动`TextInput`，结合 `animation`提升用户体验，简直爽得起飞🛫️，😄
 <!--more-->
 
+> 20190531更新：1. 实测IOS对动画有一定延时。。 2. 为兼容iPHONE X等全面屏，需对`offset`单独设置大些的值
+
 如下：
 
 ```javascript
