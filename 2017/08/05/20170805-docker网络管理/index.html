@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>docker单主机网络管理实践 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv">
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R">
+  
+  
+  <meta name="description" content="前言容器作为应用，必然需要与外界通信，包括容器之间和外部网络。 Docker网络从覆盖范围分  单台主机上的容器网络★ 跨多台主机的容器网络">
+<meta name="keywords" content="虚拟化,Docker,网络管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker单主机网络管理实践">
+<meta property="og:url" content="https://blog.binlv.top/2017/08/05/20170805-docker网络管理/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="前言容器作为应用，必然需要与外界通信，包括容器之间和外部网络。 Docker网络从覆盖范围分  单台主机上的容器网络★ 跨多台主机的容器网络">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20170805-network.png">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20170805-ip%20route.jpg">
+<meta property="og:image" content="http://olvboulzy.bkt.clouddn.com/20170805-docker%20port.jpg">
+<meta property="og:updated_time" content="2018-12-10T03:45:04.505Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker单主机网络管理实践">
+<meta name="twitter:description" content="前言容器作为应用，必然需要与外界通信，包括容器之间和外部网络。 Docker网络从覆盖范围分  单台主机上的容器网络★ 跨多台主机的容器网络">
+<meta name="twitter:image" content="http://olvboulzy.bkt.clouddn.com/20170805-network.png">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20170805-docker网络管理" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      docker单主机网络管理实践
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/08/05/20170805-docker网络管理/" class="article-date">
+	  <time datetime="2017-08-05T02:36:08.000Z" itemprop="datePublished">八月 5, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>容器作为应用，必然需要与外界通信，包括容器之间和外部网络。</p>
+<p>Docker网络从覆盖范围分</p>
+<ul>
+<li>单台主机上的容器网络★</li>
+<li>跨多台主机的容器网络</li>
+</ul>
+<a id="more"></a>
+<h1 id="容器间通信"><a href="#容器间通信" class="headerlink" title="容器间通信"></a>容器间通信</h1><p>容器间通信的三种方式：</p>
+<ul>
+<li>IP</li>
+<li>Docker DNS Server</li>
+<li>joined</li>
+</ul>
+<h2 id="IP通信"><a href="#IP通信" class="headerlink" title="IP通信"></a>IP通信</h2><p>Docker安装时，默认会在主机上创建三个网络，bridge、host、none。可用<code>docker network ls</code>查看</p>
+<h3 id="none"><a href="#none" class="headerlink" title="none"></a>none</h3><p>就是只有loopback的网络，无其他任何网卡。容器创建时可以用 <code>--network=none</code>来指定容器使用none网络</p>
+<p>适应场景：一些安全性要求较高且不需联网的应用，如生成随机密码的容器，放在none里防止窃取。</p>
+<h3 id="host"><a href="#host" class="headerlink" title="host"></a>host</h3><p>类似于虚拟机中共享主机网络的选项，即使容器共享其所在主机的网络栈，该容器的网络配置和主机完全一样。</p>
+<p>适应场景：如容器对网络传输效率较高要求，则可使用host网络。注意考虑端口冲突。</p>
+<h3 id="bridge"><a href="#bridge" class="headerlink" title="bridge"></a>bridge</h3><p>类似于虚拟机中的桥接模式，可理解为一个软件交换机。默认情况下，不指定<code>--network</code>参数，创建的容器都会挂到一个叫<code>docker0</code>的Linux bridge上。可以使用命令<code>brctl show</code>查看。</p>
+<p>注：首次使用<code>brctl</code>命令，可能会提示安装。<code>brctl</code> 命令在 Debian、Ubuntu 中可以使用 <code>sudo apt-get install bridge-utils</code> 来安装</p>
+<p>当创建一个 Docker 容器的时候，同时会创建了一对 <code>veth pair</code> 接口（当数据包发送到一个接口时，另外一个接口也可以收到相同的数据包）。这对接口一端在容器内，即 <code>eth0</code>；另一端在本地并被挂载到 <code>docker0</code> 网桥，名称以 <code>veth</code> 开头（例如 <code>vethAQI2QT</code>）。通过这种方式，主机可以跟容器通信，容器之间也可以相互通信。Docker 就创建了在主机和所有容器之间一个虚拟共享网络。</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/20170805-network.png" alt="network"></p>
+<h3 id="自定义容器网络"><a href="#自定义容器网络" class="headerlink" title="自定义容器网络"></a>自定义容器网络</h3><p>user-defined网络</p>
+<p>Docker 提供三种 user-defined 网络驱动：bridge, overlay 和 macvlan。bridge与前面类似，overlay 和 macvlan 用于创建跨主机的网络。</p>
+<p><code>docker network create --driver bridge my_net</code></p>
+<p>还可指定网段和网关，增加参数<code>--subnet</code>和<code>--gateway</code></p>
+<p><code>docker network create --driver bridge --subnet 172.22.16.0/24 --gatewat 172.22.16.1 my_net2</code></p>
+<p>要使用相关网络驱动即在创建docker容器时，指定<code>--network==xxx</code>其中xxx为驱动名称，当指定为有<code>--subnet</code>参数的驱动时，该容器可以通<code>ip</code>参数指定静态IP地址</p>
+<p><code>docker run it --network=my_net2 --ip 172.22.16.8 busybox</code></p>
+<h3 id="容器间连通"><a href="#容器间连通" class="headerlink" title="容器间连通"></a>容器间连通</h3><p>增加网卡使用<code>docker network connect</code>实现。</p>
+<p>例如：为  CONTAINER ID为2a256932添加my_net2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network connect my_net2 2a256932</span><br></pre></td></tr></table></figure>
+<h4 id="Linux路由转发功能"><a href="#Linux路由转发功能" class="headerlink" title="Linux路由转发功能"></a>Linux路由转发功能</h4><p>Linux默认一般不开启路由转发 ip forwarding，查看/etc/sysctl.cfg中的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
+<p>‘1’ 说明启用。</p>
+<p>查看防火墙iptables</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables-save</span><br><span class="line"></span><br><span class="line">-A DOCKER-ISOLATION -i br-5d863e9f78b6 -o docker0 -j DROP</span><br><span class="line">-A DOCKER-ISOLATION -i docker0 -o br-5d863e9f78b6 -j DROP</span><br></pre></td></tr></table></figure>
+<p><strong>iptables DROP 掉了网桥 docker0 与 br-5d863e9f78b6 之间双向的流量</strong>。</p>
+<p>从规则的命名 <code>DOCKER-ISOLATION</code> 可知 docker 在设计上就是要隔离不同的 netwrok。</p>
+<h2 id="Docker-DNS-Server"><a href="#Docker-DNS-Server" class="headerlink" title="Docker DNS Server"></a>Docker DNS Server</h2><p>当部署应用之前可能无法确定IP，部署之后再指定要访问的IP会比较麻烦。可通过docker自带的DNS解决问题。</p>
+<p>在docker daemon中实现了一个内嵌的DNS Server ，使容器可以直接通过“容器名”通信。容器名为创建运行容器时指定<code>--name</code>参数确定。</p>
+<p>注：docker dns 只能在user-defined网络中使用。</p>
+<h2 id="joined容器"><a href="#joined容器" class="headerlink" title="joined容器"></a>joined容器</h2><p>joined指多个容器共享网络栈，使容器之间可以通过127.0.0.1直接通信。</p>
+<p>当一个容器需要joined另一个容器，则在创建运行使指定<code>--network=container:容器name</code>即可。</p>
+<p>joined 容器非常适合以下场景：</p>
+<ol>
+<li>不同容器中的程序希望通过 loopback 高效快速地通信，比如 web server 与 app server。</li>
+<li>希望监控其他容器的网络流量，比如运行在独立容器中的网络监控程序。</li>
+</ol>
+<h1 id="容器访问外部网络"><a href="#容器访问外部网络" class="headerlink" title="容器访问外部网络"></a>容器访问外部网络</h1><p>注意：这里外部网络指的是容器网络以外的网络环境，而非特指Internet</p>
+<p>具体过程已docker0 为例：</p>
+<p>当容器要访问外网时，将数据包封装丢给网关，到达docker0，收到后将其交给MASQUERADE处理（将包源地址替换为主机地址发出去，即做了一次网络地址转换（NAT）），然后就和主机访问外网一样了。</p>
+<h2 id="MASQUERADE"><a href="#MASQUERADE" class="headerlink" title="MASQUERADE"></a>MASQUERADE</h2><p>在主机通过 <code>iptables -t nat -S</code>可查看到一条规则</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>其含义是：如果网桥 <code>docker0</code> 收到来自 172.17.0.0/16 网段的外出包，把它交给 MASQUERADE 处理。</p>
+<h2 id="抓包过程"><a href="#抓包过程" class="headerlink" title="抓包过程"></a>抓包过程</h2><p>使用tcpdump</p>
+<ol>
+<li>查看主机路由表</li>
+<li>抓取相关网卡上数据包</li>
+<li>结果分析</li>
+</ol>
+<p><code>ip r</code>查看默认路由从enp0s3出去，故监控enp0s3和docker0上的icmp数据包。</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/20170805-ip%20route.jpg" alt></p>
+<h1 id="外部世界访问容器"><a href="#外部世界访问容器" class="headerlink" title="外部世界访问容器"></a>外部世界访问容器</h1><p>docker可将容器对外提供服务的端口映射到主机的某个端口，外网通过该端口访问容器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;host ip&gt;:&lt;映射的端口&gt;</span><br></pre></td></tr></table></figure>
+<p>在容器启动时通过-p参数来映射端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80 httpd</span><br></pre></td></tr></table></figure>
+<p>默认情况下容器的端口会随机映射到主机的一个端口。</p>
+<p>可通过<code>docker ps</code>和<code>docker port</code>查看映射的端口情况、</p>
+<p>若要指定映射到主机的某个端口，则</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8080:80 httpd</span><br></pre></td></tr></table></figure>
+<p>意思是将容器的80端口映射到主机的8080端口上<strong>（别搞反了）</strong></p>
+<p>每一个映射的端口，host 都会启动一个 <code>docker-proxy</code> 进程来处理访问容器的流量。</p>
+<p>过程如下：</p>
+<p><img src="http://olvboulzy.bkt.clouddn.com/20170805-docker%20port.jpg" alt></p>
+<ol>
+<li>docker-proxy 监听 host 的 32773 端口。</li>
+<li>当 curl 访问 10.0.2.15:32773 时，docker-proxy 转发给容器 172.17.0.2:80。</li>
+<li>httpd 容器响应请求并返回结果。</li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络管理/">网络管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟化/">虚拟化</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/14/20170814-docker-machine/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          docker machine
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/29/20170729-VSAN/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">说说vSAN</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器间通信"><span class="nav-number">2.</span> <span class="nav-text">容器间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP通信"><span class="nav-number">2.1.</span> <span class="nav-text">IP通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#none"><span class="nav-number">2.1.1.</span> <span class="nav-text">none</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#host"><span class="nav-number">2.1.2.</span> <span class="nav-text">host</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bridge"><span class="nav-number">2.1.3.</span> <span class="nav-text">bridge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义容器网络"><span class="nav-number">2.1.4.</span> <span class="nav-text">自定义容器网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器间连通"><span class="nav-number">2.1.5.</span> <span class="nav-text">容器间连通</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux路由转发功能"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">Linux路由转发功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-DNS-Server"><span class="nav-number">2.2.</span> <span class="nav-text">Docker DNS Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joined容器"><span class="nav-number">2.3.</span> <span class="nav-text">joined容器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器访问外部网络"><span class="nav-number">3.</span> <span class="nav-text">容器访问外部网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MASQUERADE"><span class="nav-number">3.1.</span> <span class="nav-text">MASQUERADE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包过程"><span class="nav-number">3.2.</span> <span class="nav-text">抓包过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外部世界访问容器"><span class="nav-number">4.</span> <span class="nav-text">外部世界访问容器</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

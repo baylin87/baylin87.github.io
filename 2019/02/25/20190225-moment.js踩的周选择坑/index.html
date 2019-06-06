@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>moment.js踩的周选择坑 | lvbin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="binlv">
+  
+  
+  
+    <meta name="baidu-site-verification" content="JTkcwS5G1R">
+  
+  
+  <meta name="description" content="moment.js是一个强大的JavaScript日期处理类库，加上antd与moment.js的强耦合，必须用。 故事的开始要从前段时间做的一个需求的其中一个功能：  用户可选择默认周期为“下周（下周一~下周日）”，支持当前周往后再选4周（W+1 ~ W+4）">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="moment.js踩的周选择坑">
+<meta property="og:url" content="https://blog.binlv.top/2019/02/25/20190225-moment.js踩的周选择坑/index.html">
+<meta property="og:site_name" content="lvbin&#39;s Blog">
+<meta property="og:description" content="moment.js是一个强大的JavaScript日期处理类库，加上antd与moment.js的强耦合，必须用。 故事的开始要从前段时间做的一个需求的其中一个功能：  用户可选择默认周期为“下周（下周一~下周日）”，支持当前周往后再选4周（W+1 ~ W+4）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-30T15:17:02.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="moment.js踩的周选择坑">
+<meta name="twitter:description" content="moment.js是一个强大的JavaScript日期处理类库，加上antd与moment.js的强耦合，必须用。 故事的开始要从前段时间做的一个需求的其中一个功能：  用户可选择默认周期为“下周（下周一~下周日）”，支持当前周往后再选4周（W+1 ~ W+4）">
+  
+    <link rel="alternate" href="/atom.xml" title="lvbin&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="lvbin&#39;s Blog" rel="home"> lvbin&#39;s Blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">书写是为了更好的思考</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-20190225-moment.js踩的周选择坑" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      moment.js踩的周选择坑
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/02/25/20190225-moment.js踩的周选择坑/" class="article-date">
+	  <time datetime="2019-02-25T11:30:45.000Z" itemprop="datePublished">二月 25, 2019</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>moment.js</code>是一个强大的JavaScript日期处理类库，加上antd与moment.js的强耦合，必须用。</p>
+<p>故事的开始要从前段时间做的一个需求的其中一个功能：</p>
+<blockquote>
+<p>用户可选择默认周期为“下周（下周一~下周日）”，支持当前周往后再选4周（W+1 ~ W+4）<br><a id="more"></a><br>当时的实现四周日期如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setWeekList(howMuch = <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (howMuch === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> item = &#123;</span><br><span class="line">    start: moment().day(<span class="string">'Monday'</span>).add(<span class="number">7</span> * howMuch, <span class="string">'d'</span>).format(<span class="string">'YYYY-MM-DD'</span>),</span><br><span class="line">    end: moment().day(<span class="string">'Monday'</span>).add((<span class="number">7</span> * howMuch) + <span class="number">6</span>, <span class="string">'d'</span>).format(<span class="string">'YYYY-MM-DD'</span>),</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">this</span>.weekList.unshift(&#123; ...item &#125;);</span><br><span class="line">  <span class="keyword">this</span>.setWeekList(howMuch - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>正常工作日使用是没有问题的，但周日选择会出现问题：<br>我们日常认为的周起始是周一，但moment.js中默认为周日。。。导致周日时取的下周为下下周==。</p>
+<p>正确姿势：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">setWeekList(howMuch = <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (howMuch === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * WARNING:</span></span><br><span class="line"><span class="comment">   * `moment().startOf('isoWeek');` set to the first day (Monday) of this week according to ISO 8601, 12:00 am</span></span><br><span class="line"><span class="comment">   * `moment().day('Monday')` default first day --- Sunday</span></span><br><span class="line"><span class="comment">   * doc: https://momentjs.com/docs/#/manipulating/start-of/</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">const</span> item = &#123;</span><br><span class="line">    start: moment()</span><br><span class="line">            .startOf(<span class="string">'isoWeek'</span>)</span><br><span class="line">            .add(<span class="number">7</span> * howMuch, <span class="string">'d'</span>)</span><br><span class="line">            .format(<span class="string">'YYYY-MM-DD'</span>),</span><br><span class="line">    end: moment()</span><br><span class="line">          .startOf(<span class="string">'isoWeek'</span>)</span><br><span class="line">          .add((<span class="number">7</span> * howMuch) + <span class="number">6</span>, <span class="string">'d'</span>)</span><br><span class="line">          .format(<span class="string">'YYYY-MM-DD'</span>),</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">this</span>.weekList.unshift(&#123; ...item &#125;);</span><br><span class="line">  <span class="keyword">this</span>.setWeekList(howMuch - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/编程开发/">编程开发</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yODU3My81MTQ0">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/28/编程开发/20190228-RN Keyboard Covering Inputs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          React Native Keyboard Covering Inputs
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/07/20190107-Leetcode判断单调数组/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">LeetCode-判断单调数组</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 lvbin&#39;s Blog All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'google8c5a3d0f2edbe41e', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6ce35fe44e8fac4b3d4d4133cc77fff6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
