@@ -178,7 +178,7 @@ var themeMenus = {};
 <p>例如：为  CONTAINER ID为2a256932添加my_net2</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network connect my_net2 2a256932</span><br></pre></td></tr></table></figure>
 <h4 id="Linux路由转发功能"><a href="#Linux路由转发功能" class="headerlink" title="Linux路由转发功能"></a>Linux路由转发功能</h4><p>Linux默认一般不开启路由转发 ip forwarding，查看/etc/sysctl.cfg中的</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">sysctl net.ipv4.ip_forward</span></span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
 <p>‘1’ 说明启用。</p>
 <p>查看防火墙iptables</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables-save</span><br><span class="line"></span><br><span class="line">-A DOCKER-ISOLATION -i br-5d863e9f78b6 -o docker0 -j DROP</span><br><span class="line">-A DOCKER-ISOLATION -i docker0 -o br-5d863e9f78b6 -j DROP</span><br></pre></td></tr></table></figure>
