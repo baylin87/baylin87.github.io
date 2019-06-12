@@ -117,6 +117,80 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-20171012-iptables" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/10/12/20171012-iptables/">iptables</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/12/20171012-iptables/" class="article-date">
+	  <time datetime="2017-10-12T02:20:00.000Z" itemprop="datePublished">十月 12, 2017</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            iptables完全控制目标
+搭建一套企业实际使用的防火墙规则
+防攻击
+数据包转发
+实际使用意义
+
+
+Netfilter—Linux用于数据包处理，iptables会调用其使用
+Hook point—数据包在Netfilter中的挂载点
+
+iptables规则组成4表5链表：filter、nat、mangle、raw链：INPUT、OUTPUT、FORWARD、PREROUTING、POSTROUTING
+作用：
+mangle:修改数据包，改变包头内容（TTL、TOS、MARK）raw：数据包状态跟踪分析
+filter：访问控制、规则匹配nat：地址转发
+
+具体规则
+访问控制：ACCEP...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/10/12/20171012-iptables/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/系统运维/">系统运维</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iptables/">iptables</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-20170922-zepto" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -733,81 +807,11 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
 <!-- Table of Contents -->
 
   
-    <article id="post-20170523-Oracle 11g RAC Installation Guide" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/">RAC学习记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/" class="article-date">
-	  <time datetime="2017-05-23T07:00:00.000Z" itemprop="datePublished">五月 23, 2017</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            RAC理论基础在RAC术语中，主机通常叫做“节点”。每个主机的硬件配置应该一样：
-
-每个主机至少需要两块网卡，一个用于集群内部私有通信—Private NIC，另一个网卡用于对外提供服务，如提供用户数据查询—公共网卡（Public NIC）；
-每个主机还要有一个HBA卡，通过光纤连接到存储设备
-除公共和私有IP，每个节点还有VIP（Virtual IP），宕机时使用  共享存储
-多实例，单一数据 架构
-所有节点共享一个数据库
-数据文件、联机日志、参数文件、控制文件必须存放在共享存储上
-保证每个节点都能访问这个存储设备  
-
-
-安装步骤服务器准备
-操作系统及补丁包要求：OEL 使用 ASM...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/23/20170523-Oracle 11g RAC Installation Guide/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAC/">RAC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cluster/">cluster</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
 
 </section>
@@ -931,6 +935,18 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2019/05/30/编程开发/20190530-JS函数式编程/">JS函数式编程</a></h6>
+              <span>五月 30, 2019</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2019/04/27/编程开发/20190427-RN Keyboard dismiss/">RN Keyboard dismiss</a></h6>
               <span>四月 27, 2019</span>
             </div>
@@ -943,7 +959,7 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/03/26/20190326-数组去重/">数组去重</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/03/26/编程开发/20190326-数组去重/">数组去重</a></h6>
               <span>三月 26, 2019</span>
             </div>
 
@@ -967,20 +983,8 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2019/02/25/20190225-moment.js踩的周选择坑/">moment.js踩的周选择坑</a></h6>
+              <h6 style="margin: 0;"><a href="/2019/02/25/编程开发/20190225-moment.js踩的周选择坑/">moment.js踩的周选择坑</a></h6>
               <span>二月 25, 2019</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2019/01/07/20190107-Leetcode判断单调数组/">LeetCode-判断单调数组</a></h6>
-              <span>一月 7, 2019</span>
             </div>
 
           </li>
@@ -994,7 +998,7 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外文翻译/">外文翻译</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">21</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/信息安全/">信息安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/外文翻译/">外文翻译</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂七杂八/">杂七杂八</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/物联网/">物联网</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/系统运维/">系统运维</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程开发/">编程开发</a><span class="category-list-count">22</span></li></ul>
     </div>
   </div>
 
@@ -1014,7 +1018,7 @@ CommonJSCommonJS 服务器端模块的规范—Node.js采用该规范
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1138,5 +1142,8 @@ ga('send', 'pageview');
 
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js" async=""></script>
+
+  <script src="/js/instantclick.min.js" data-no-instant></script>
+  <script data-no-instant>InstantClick.init();</script>
 </body>
 </html>
