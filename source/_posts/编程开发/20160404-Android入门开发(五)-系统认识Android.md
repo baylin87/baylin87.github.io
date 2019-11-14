@@ -7,10 +7,10 @@ categories: 编程开发
 ---
 补了好多Java基础知识，
 
-> - [Java 基础语法]()
-> - [Java 面向对象]()
-> - [Java 常用工具类]()
-> - [Java 类集框架]()
+> - [Java 基础语法](https://blog.binlv.top/2016/03/11/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/20160311-Android%E5%85%A5%E9%97%A8%E5%BC%80%E5%8F%91(%E4%B8%80)-Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/)
+> - [Java 面向对象](https://blog.binlv.top/2016/03/12/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/20160312-Android%E5%85%A5%E9%97%A8%E5%BC%80%E5%8F%91(%E4%BA%8C)-Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/)
+> - [Java 常用工具类](https://blog.binlv.top/2016/03/13/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/20160313-Android%E5%85%A5%E9%97%A8%E5%BC%80%E5%8F%91(%E4%B8%89)-Java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB/)
+> - [Java 类集框架](https://blog.binlv.top/2016/04/01/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/20160401-Android%E5%85%A5%E9%97%A8%E5%BC%80%E5%8F%91(%E5%9B%9B)-Java%E7%B1%BB%E9%9B%86%E6%A1%86%E6%9E%B6/)
 
 终于可以开始碰Android，我主要参考郭霖的[《第二行代码》](http://www.ituring.com.cn/book/1841)来写的读书笔记。毕竟他的[《第一行代码》](http://www.ituring.com.cn/book/1473)被热推，不过由于Android更新太快，里面很多东西都过时，刚好作者十分勤奋，2016年底推出《第二行代码》，迅速学起来。
 
