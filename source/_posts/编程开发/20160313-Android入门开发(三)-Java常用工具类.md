@@ -1,8 +1,7 @@
 ---
-title: Android入门开发(三)---Java常用工具类
+title: Java常用工具类
 tags:
   - Java
-  - Android
 comments: true
 date: 2016-03-13 13:16:45
 categories: 编程开发

@@ -1,8 +1,7 @@
 ---
-title: Android入门开发(四)-Java类集框架
+title: Java类集框架
 tags:
   - Java
-  - Android
 comments: true
 date: 2016-04-01 21:17:23
 categories: 编程开发

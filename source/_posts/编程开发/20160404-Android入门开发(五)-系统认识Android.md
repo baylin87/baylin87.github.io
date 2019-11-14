@@ -1,11 +1,18 @@
 ---
-title: Android入门开发(五)---系统认识Android
+title: Android入门开发---系统认识Android
 tags:
    - Android
 date: 2016-04-04 20:33:50
 categories: 编程开发
 ---
-补了好多Java基础知识，终于可以开始碰Android，我主要参考郭霖的[《第二行代码》](http://www.ituring.com.cn/book/1841)来写的读书笔记。毕竟他的[《第一行代码》](http://www.ituring.com.cn/book/1473)被热推，不过由于Android更新太快，里面很多东西都过时，刚好作者十分勤奋，2016年底推出《第二行代码》，迅速学起来。
+补了好多Java基础知识，
+
+> - [Java 基础语法]()
+> - [Java 面向对象]()
+> - [Java 常用工具类]()
+> - [Java 类集框架]()
+
+终于可以开始碰Android，我主要参考郭霖的[《第二行代码》](http://www.ituring.com.cn/book/1841)来写的读书笔记。毕竟他的[《第一行代码》](http://www.ituring.com.cn/book/1473)被热推，不过由于Android更新太快，里面很多东西都过时，刚好作者十分勤奋，2016年底推出《第二行代码》，迅速学起来。
 
 - 工具 [Android Studio 中文站](http://www.android-studio.org/) 
 

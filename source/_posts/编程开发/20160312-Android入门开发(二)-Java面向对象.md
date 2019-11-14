@@ -1,8 +1,7 @@
 ---
-title: Android入门开发(二)---Java面向对象
+title: Java面向对象
 tags:
   - Java
-  - Android
 comments: true
 date: 2016-03-12 22:57:01
 categories: 编程开发

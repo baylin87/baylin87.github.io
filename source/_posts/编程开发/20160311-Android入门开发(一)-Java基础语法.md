@@ -1,8 +1,7 @@
 ---
-title: Android入门开发(一)---Java基础语法
+title: Java基础语法
 tags:
   - Java
-  - Android
 comments: true
 date: 2016-03-11 10:50:51
 categories: 编程开发
